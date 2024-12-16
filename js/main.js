@@ -330,3 +330,50 @@ function initServicesCarousel() {
 // Initialize carousel
 window.addEventListener('load', initServicesCarousel);
 window.addEventListener('resize', initServicesCarousel);
+
+// Services section navigation
+const servicesContainer = document.querySelector('.services-container');
+const prevArrow = document.querySelector('.prev-arrow');
+const nextArrow = document.querySelector('.next-arrow');
+
+function updateServicesArrows() {
+    const isScrollNeeded = servicesContainer.scrollWidth > servicesContainer.clientWidth;
+    
+    // Only show arrows if scrolling is needed
+    if (isScrollNeeded) {
+        prevArrow.style.display = 'flex';
+        nextArrow.style.display = 'flex';
+        
+        // Update arrow states based on scroll position
+        prevArrow.style.opacity = servicesContainer.scrollLeft <= 0 ? '0.5' : '1';
+        nextArrow.style.opacity = 
+            servicesContainer.scrollLeft >= servicesContainer.scrollWidth - servicesContainer.clientWidth 
+            ? '0.5' : '1';
+    } else {
+        prevArrow.style.display = 'none';
+        nextArrow.style.display = 'none';
+    }
+}
+
+// Add scroll event listener to update arrow states
+servicesContainer.addEventListener('scroll', updateServicesArrows);
+
+// Update arrows on load and resize
+updateServicesArrows();
+window.addEventListener('resize', updateServicesArrows);
+
+if (prevArrow && nextArrow) {
+    prevArrow.addEventListener('click', () => {
+        servicesContainer.scrollBy({
+            left: -servicesContainer.offsetWidth,
+            behavior: 'smooth'
+        });
+    });
+
+    nextArrow.addEventListener('click', () => {
+        servicesContainer.scrollBy({
+            left: servicesContainer.offsetWidth,
+            behavior: 'smooth'
+        });
+    });
+}
