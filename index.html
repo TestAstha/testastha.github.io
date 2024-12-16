@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Astha Singh Thakur</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
     <nav>
         <div class="nav-content">
             <div class="nav-left">
                 <div class="logo">
-                    <span class="logo-full">astha_singh_thakur</span>
-                    <span class="logo-short">ast.</span>
+                    <span>Astha.</span>
                 </div>
                 <button id="theme-toggle" aria-label="Toggle theme">
-                    <span class="toggle-track">
-                        <span class="toggle-icon light"><i class="fas fa-sun"></i></span>
-                        <span class="toggle-icon dark"><i class="fas fa-moon"></i></span>
-                    </span>
+                    <i class="fas fa-moon moon-icon"></i>
                 </button>
             </div>
-            <button class="menu-toggle" aria-label="Toggle menu">
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="nav-links">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
+                <a href="#home">Home</a>
+                <a href="about.html">About</a>
                 <a href="#services">Services</a>
                 <a href="#projects">Projects</a>
                 <a href="#blog">Blog</a>
+                <a href="resume.pdf" class="resume-btn" target="_blank">Resume</a>
             </div>
         </div>
     </nav>
@@ -39,26 +37,32 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <div class="hero-image">
-                    <div class="image-wrapper">
-                        <img src="assets/profile.jpg" alt="Profile">
+                <div class="title-wrapper">
+                    <span class="brackets">{</span>
+                    <span class="dynamic-text"></span>
+                    <span class="cursor"></span>
+                    <span class="brackets">}</span>
+                </div>
+                <div class="content-bottom">
+                    <div class="hero-text">
+                        <p>I'm a <strong>software engineer</strong> and <strong>data scientist</strong> with <strong>4+ years</strong> in machine learning, AI, CRM analytics, and R&D. I drive growth and optimize processes for Fortune 100 & 500 companies, and love sharing the latest tech trends as a public speaker!</p>
+                        <p>Throughout my career, I have worn many hats, leading cross-functional teams and building key processes from the ground up.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:your.email@example.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://calendly.com/yourusername" target="_blank" aria-label="Calendly">
+                            <iconify-icon icon="simple-icons:calendly" style="color: currentColor;"></iconify-icon>
+                        </a>
                     </div>
                 </div>
-                <div class="hero-text">
-                    <div class="title-wrapper">
-                        <h2 class="title">Create</h2>
-                        <h2 class="title">Design</h2>
-                        <h2 class="title">Code</h2>
-                        <h2 class="title">Build</h2>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="section-content">
-                <h2>About Me</h2>
-                <p>I'm a software engineer and data scientist with 4+ years in machine learning, AI, CRM analytics, and R&D. I drive growth and optimize processes for Fortune 100 & 500 companies, and love sharing the latest tech trends as a public speaker!</p>
             </div>
         </section>
 
