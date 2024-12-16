@@ -1,39 +1,121 @@
-// Theme Toggle Functionality
+// Dynamic text animation with typing effect
+const dynamicText = document.querySelector('.dynamic-text');
+if (dynamicText) {  // Only run typing animation if element exists
+    const words = ['Create', 'Design', 'Code', 'Build'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+            dynamicText.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            const displayText = currentWord.substring(0, charIndex + 1);
+            dynamicText.textContent = displayText + (charIndex < currentWord.length - 1 ? '_' : '');
+            charIndex++;
+        }
+
+        let typingSpeed = isDeleting ? 100 : 150;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            typingSpeed = 2000; // Pause at the end of word
+            setTimeout(() => isDeleting = true, 1500);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typingSpeed = 500; // Pause before starting new word
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    // Start the typing animation
+    type();
+}
+
+// Theme Toggle
+console.log('Theme toggle script starting...');
 const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = themeToggle.querySelector('i');
+console.log('Theme toggle button:', themeToggle);
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Check for saved theme preference or use system preference
-const getCurrentTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        return savedTheme;
-    }
-    return prefersDarkScheme.matches ? 'dark' : 'light';
-};
+function getCurrentTheme() {
+    const theme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+    console.log('Current theme:', theme);
+    return theme;
+}
 
-// Apply theme
-const applyTheme = (theme) => {
+function setTheme(theme) {
+    console.log('Setting theme to:', theme);
     document.documentElement.setAttribute('data-theme', theme);
-    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     localStorage.setItem('theme', theme);
-};
+    
+    // Update moon icon
+    const moonIcon = document.querySelector('.moon-icon');
+    console.log('Moon icon element:', moonIcon);
+    if (moonIcon) {
+        moonIcon.classList.toggle('fa-sun', theme === 'light');
+        moonIcon.classList.toggle('fa-moon', theme === 'dark');
+    }
+}
 
 // Initialize theme
-applyTheme(getCurrentTheme());
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
+    const initialTheme = getCurrentTheme();
+    console.log('Initial theme:', initialTheme);
+    setTheme(initialTheme);
+});
 
 // Theme toggle click handler
-themeToggle.addEventListener('click', () => {
-    const currentTheme = getCurrentTheme();
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-});
+if (themeToggle) {
+    console.log('Adding click handler to theme toggle');
+    themeToggle.addEventListener('click', () => {
+        console.log('Theme toggle clicked');
+        const currentTheme = getCurrentTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        console.log('Switching from', currentTheme, 'to', newTheme);
+        setTheme(newTheme);
+    });
+} else {
+    console.log('Theme toggle button not found!');
+}
 
 // Handle system theme changes
 prefersDarkScheme.addEventListener('change', (e) => {
-    const newTheme = e.matches ? 'dark' : 'light';
-    applyTheme(newTheme);
+    console.log('System theme changed:', e.matches ? 'dark' : 'light');
+    setTheme(e.matches ? 'dark' : 'light');
 });
+
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        }
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -48,10 +130,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Add scroll event listener for navbar
 window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
+    if (nav) {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
     }
 });
 
@@ -73,58 +157,42 @@ document.querySelectorAll('.work-item').forEach(item => {
     observer.observe(item);
 });
 
-// Mobile menu toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+// Update active menu item based on scroll position
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-links a');
 
-    // Menu toggle
-    menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-    });
+function updateActiveMenuItem() {
+    const scrollPosition = window.scrollY + 100; // Offset for nav bar height
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.nav-content')) {
-            navLinks.classList.remove('active');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${sectionId}`) {
+                    item.classList.add('active');
+                }
+            });
         }
     });
+}
 
-    // Update active menu item based on scroll position
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.nav-links a');
+// Update active state on scroll
+window.addEventListener('scroll', updateActiveMenuItem);
 
-    function updateActiveMenuItem() {
-        const scrollPosition = window.scrollY + 100; // Offset for nav bar height
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${sectionId}`) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-
-    // Update active state on scroll
-    window.addEventListener('scroll', updateActiveMenuItem);
-
-    // Update active state on click
-    navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            navItems.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Close mobile menu after click
-            navLinks.classList.remove('active');
-        });
+// Update active state on click
+navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+        navItems.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Close mobile menu after click
+        navLinks.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
     });
 });
 
