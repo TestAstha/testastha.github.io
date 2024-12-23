@@ -16,7 +16,7 @@
     --elevated-bg: #f8f9fa;
     --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     --hover-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --border-color: rgba(0, 0, 0, 0.1);
+    --border-color: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] {
@@ -44,14 +44,41 @@
     --elevated-bg: #2a2a2a;
     --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     --hover-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.15);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none;
+}
+
+@media (min-width: 769px) {
+    * {
+        cursor: none;
+    }
+    
+    body {
+        cursor: none;
+    }
+    
+    .cursor {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .cursor {
+        display: none !important;
+    }
+    
+    * {
+        cursor: auto;
+    }
+    
+    body {
+        cursor: auto;
+    }
 }
 
 html {
@@ -64,7 +91,6 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: none;
 }
 
 /* Global Layout */
@@ -650,88 +676,81 @@ nav {
     padding: 6rem 2rem;
 }
 
-.experience-section {
-    background-color: var(--alt-bg);
-    padding: 6rem 2rem;
+.cards-section .cards-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
 }
 
-.stats-section {
-    background-color: var(--bg-color);
-    padding: 6rem 2rem;
+.cards-section .nav-arrow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.awards-section {
-    background-color: var(--alt-bg);
-    padding: 6rem 2rem;
+.cards-section .prev-arrow {
+    left: -3rem;
 }
 
-.blog-section {
-    background-color: var(--bg-color);
-    padding: 6rem 2rem;
+.cards-section .next-arrow {
+    right: -3rem;
 }
 
-/* For light theme */
-[data-theme="light"] .about-page,
-[data-theme="light"] .about-hero,
-[data-theme="light"] .stats-section {
-    background-color: #F3F3F3;
+.cards-section .nav-arrow:hover {
+    background: var(--accent-color);
 }
 
-[data-theme="light"] .experience-section,
-[data-theme="light"] .awards-section {
-    background-color: #FBFBFB;
-}
-
-
-[data-theme="light"] .award-item {
-    background-color: #F3F3F3;
-}
-
-/* Update card backgrounds for dark theme */
-.experience-item,
-.award-item {
-
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.info-card {
-    background-color: var(--bg-color);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
+.cards-section .nav-arrow i {
+    color: var(--text-color);
 }
 
 .cards-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
 }
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin: 2rem 0;
+    padding: 1rem 0;
 }
 
 .info-card {
-    background-color: var(--alt-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--secondary-color);
+    background: var(--elevated-bg);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    height: auto;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
 }
 
 .info-card:hover {
+    box-shadow: var(--hover-card-shadow);
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .info-card h3 {
-    color: var(--title-color);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 .card-item {
@@ -740,26 +759,85 @@ nav {
 
 .card-item p {
     color: var(--text-color);
-    line-height: 1.6;
-}
-
-@media (max-width: 1024px) {
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {
     .cards-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 1rem 0;
+        margin: 1rem 0;
+    }
+
+    .info-card {
+        flex: 0 0 290px;
+        scroll-snap-align: start;
+        margin-bottom: 1rem;
+    }
+
+    .cards-grid::-webkit-scrollbar {
+        display: none;
     }
     
-    .cards-content {
-        padding: 0 1rem;
+    .cards-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
 
-/* Experience Section */
+.gallery-section {
+    overflow: hidden;
+    padding: 4rem 0;
+}
+
+.gallery-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.gallery-content h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.gallery-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 2rem;
+    will-change: transform;
+}
+
+.gallery-item {
+    flex: 0 0 300px;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
 .experience-section {
     padding: 8rem 0;
     background-color: var(--bg-color);
@@ -803,13 +881,10 @@ nav {
     display: flex;
     flex-direction: column;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
 }
 
-.experience-item:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-}
 
 .role-info {
     margin-bottom: 0.5rem;
@@ -874,7 +949,7 @@ nav {
     }
 
     .company-duration {
-        flex-direction: column;
+
         align-items: flex-start;
         gap: 0.25rem;
     }
@@ -886,11 +961,17 @@ nav {
 
 /* Stats Section */
 .stats-section {
-    max-width: 1200px;
-    margin: 4rem auto;
+    width: 100%;
+    background: var(--elevated-bg);
     padding: 4rem 0;
     border-top: 1px solid var(--accent-color);
     border-bottom: 1px solid var(--accent-color);
+}
+
+.stats-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .stat-grid {
@@ -913,6 +994,33 @@ nav {
 .stat-label {
     color: var(--secondary-color);
     font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .stats-section {
+        padding: 2rem 0;
+        background: #1a1a1a;
+        border: none;
+    }
+
+    .stats-content {
+        padding: 0 1rem;
+    }
+
+    .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+        color: #888888;
+        font-size: 0.85rem;
+    }
 }
 
 /* Awards Section */
@@ -990,9 +1098,6 @@ nav {
         font-size: 2.5rem;
     }
 
-    .stat-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Services Section */
