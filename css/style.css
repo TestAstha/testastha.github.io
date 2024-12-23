@@ -1525,13 +1525,13 @@ footer {
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: repeat(3, 1fr);
-        text-align: left;
+        text-align: center;
         gap: 2rem;
     }
     
     .name-section {
         grid-column: 1 / -1;
-        text-align: left;
+        text-align: center;
         margin-bottom: 2rem;
     }
 
