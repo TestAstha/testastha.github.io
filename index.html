@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astha Singh Thakur</title>
+    <link rel="icon" href="assets/larger-favicon.png" />
+    <!-- Add Allura font for website (not needed for favicon anymore) -->
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="Astha Singh Thakur" />
+    <meta property="og:description" content="Hi, I am Astha 👋 | Bridging full-stack engineering with intelligent AI systems." />
+    <meta property="og:image" content="assets/profile-color.jpg" />
+    <meta property="og:url" content="https://testastha.github.io/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card meta tags for Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Astha Singh Thakur">
+    <meta name="twitter:description" content="Hi, I am Astha 👋 | Bridging full-stack engineering with intelligent AI systems.">
+    <meta name="twitter:image" content="assets/profile-color.jpg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/project-cards.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+</head>
+<body>
+    <div class="cursor">
+        <div class="cursor__ball cursor__ball--big">
+            <svg height="24" width="24">
+                <circle cx="12" cy="12" r="9" stroke-width="0"></circle>
+            </svg>
+        </div>
+        <div class="cursor__ball cursor__ball--small">
+            <svg height="10" width="10">
+                <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+            </svg>
+        </div>
+    </div>
+    <nav>
+        <div class="nav-content">
+            <div class="nav-left">
+                <div class="logo">
+                    <span>Astha.</span>
+                </div>
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon moon-icon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="about.html">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#blog">Blog</a>
+                <a href="Resume/Resume_Astha.pdf" target="_blank">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="title-wrapper">
+                    <span class="brackets">{</span>
+                    <span class="dynamic-text"></span>
+                    <span class="cursor"></span>
+                    <span class="brackets">}</span>
+                </div>
+                <div class="content-bottom">
+                    <div class="hero-text">
+                        <p>Full Stack Developer, AI Engineer, Data Scientist with <strong>5+</strong> years of experience building AI-driven systems & scalable web apps. Skilled in Full Stack, GenAI, ML models, & data, with a proven track record working with Fortune 100 & 500 companies to optimize growth.</p>
+                        <br>
+                        <p>Passionate about tech innovation, leading teams, & being a public speaker.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/astha-t/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/ASTHA22" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:asthasingh220697@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://calendly.com/asthat/30min" target="_blank" aria-label="Calendly">
+                            <iconify-icon icon="simple-icons:calendly" style="color: currentColor;"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-content">
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years of Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">Fortune 500 Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Developers Led</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Research Contributions</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="section-content">
+                <h2>Services</h2>
+                <div class="services-wrapper">
+                    <button class="nav-arrow prev-arrow" aria-label="Previous service">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="services-container">
+                        <div class="service-card card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3 class="card-title">Frontend Development</h3>
+                            <ul>
+                                <li><a>React & JavaScript applications</a></li>
+                                <li><a>Responsive UI with Bootstrap</a></li>
+                                <li><a>UI/UX design with Figma</a></li>
+                                <li><a>Interactive web experiences</a></li>
+                            </ul>
+                        </div>
+                        <div class="service-card card">
+                            <i class="fas fa-cogs"></i>
+                            <h3 class="card-title">Backend Development</h3>
+                            <ul>
+                                <li><a>Python, Java & Node.js APIs</a></li>
+                                <li><a>Cloud services (GCP, Azure)</a></li>
+                                <li><a>Database optimization</a></li>
+                                <li><a>Containerization with Docker</a></li>
+                            </ul>
+                        </div>
+                        <div class="service-card card">
+                            <i class="fas fa-network-wired"></i>
+                            <h3 class="card-title">AI/ML Development</h3>
+                            <ul>
+                                <li><a>Custom ML models</a></li>
+                                <li><a>Recommendation engines</a></li>
+                                <li><a>LLM fine-tuning</a></li>
+                                <li><a>AI agent integration</a></li>
+                            </ul>
+                        </div>
+                        <div class="service-card card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3 class="card-title">Data Science & Analytics</h3>
+                            <ul>
+                                <li><a>Customer segmentation</a></li>
+                                <li><a>Predictive modeling</a></li>
+                                <li><a>CRM analytics</a></li>
+                                <li><a>BigQuery & SQL optimization</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="nav-arrow next-arrow" aria-label="Next service">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="services-dots"></div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="section-content">
+                <h2>My Projects</h2>
+                
+                <!-- Project Categories -->
+                <div class="project-categories">
+                    <button class="tab-btn active" data-category="all">All</button>
+                    <button class="tab-btn" data-category="software-eng">Development</button>
+                    <button class="tab-btn" data-category="ai-ml">AI/ML</button>
+                    <button class="tab-btn" data-category="analytics">Analytics</button>
+                    <button class="tab-btn" data-category="hackathon">Hackathons</button>
+                </div>
+                
+                <!-- Desktop Grid Layout -->
+                <div class="project-grid">
+                    <!-- Project 1: Neunet -->
+                    <div class="project-item card" data-category="software-eng ai-ml">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/neunet.png" alt="Neunet - AI Recruiter App" class="card-img-top mb-3 zoom-mobile">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://www.neunet.io/login" target="_blank" rel="noopener noreferrer" class="animated-link">Neunet</a></h3>
+                                <span class="project-date">Jan 2025 - Present</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">A recruiter friendly app that handles job postings, candidate applications, and AI-powered candidate matching.</p>
+                                <div class="project-tags">
+                                    <span class="tag">FastAPI</span>
+                                    <span class="tag">Azure Cosmos DB</span>
+                                    <span class="tag">React</span>
+                                    <span class="tag">OpenAI</span>
+                                    <span class="tag">TypeScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Portfolio Website (2025) -->
+                    <div class="project-item card" data-category="software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/portfolio-2025.png" alt="Portfolio Website 2025" class="card-img-top mb-3 theme-aware-image zoom-mobile" data-light-src="assets/img/portfolio-2025.png" data-dark-src="assets/img/portfolio-2025-dark.png">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/testastha.github.io" target="_blank" rel="noopener noreferrer" class="animated-link">Portfolio - 2025</a></h3>
+                                <span class="project-date">Dec 2024 - Apr 2025</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Modern portfolio redesign with improved UI/UX, project categorization, and responsive layout. Features interactive elements, smooth animations, and theme toggling.</p>
+                                <div class="project-tags">
+                                    <span class="tag">HTML5</span>
+                                    <span class="tag">CSS3</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">Responsive Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Step 0 - Virtual Doctor -->
+                    <div class="project-item card" data-category="ai-ml hackathon">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/step0.jpg" alt="Step 0 - Virtual Doctor" class="card-img-top mb-3 zoom-mobile zoom-mobile-strong zoom-mobile-right" style="object-position: right center;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://lnkd.in/gTqWHVRY" target="_blank" rel="noopener noreferrer" class="animated-link">Step 0</a></h3>
+                                <span class="project-date">Dec 2024</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">A fully functional Virtual Doctor prototype designed to revolutionize healthcare with AI-driven interactions, diagnosing symptoms and recommending next steps.</p>
+                                <div class="project-tags">
+                                    <span class="tag">HeyGen</span>
+                                    <span class="tag">Video AI Agent</span>
+                                    <span class="tag">OpenAI</span>
+                                    <span class="tag">Healthcare AI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Fetch Compare Build -->
+                    <div class="project-item card" data-category="ai-ml hackathon">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/hac_ss.jpg" class="card-img-top mb-3 zoom-mobile zoom-mobile-strong" alt="Fetch Compare Build" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/Hack-for-social-impact---Bay-area-affordable-housing-development" target="_blank" rel="noopener noreferrer" class="animated-link">Fetch Compare Build</a></h3>
+                                <span class="project-date">Nov 2024</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">𝗧𝗼𝗽 𝟯 in the Hack for Social Impact hackathon - Uses advanced AI & decentralized technologies to assist with comparing building codes across jurisdictions in the Bay Area.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Fetch.ai</span>
+                                    <span class="tag">AI Agent</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">PostgreSQL</span>
+                                    <span class="tag">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Project 5: Braintrust -->
+                    <div class="project-item card" data-category="ai-ml software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/llm-evaluation.jpg" alt="Braintrust - LLM Evaluation" class="card-img-top mb-3 zoom-mobile">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/braintrust-project" target="_blank" rel="noopener noreferrer" class="animated-link">Braintrust</a></h3>
+                                <span class="project-date">Apr 2025</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">This project demonstrates how to integrate with Braintrust for LLM evaluation and logging.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">LLM Eval</span>
+                                    <span class="tag">Braintrust</span>
+                                    <span class="tag">BTQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Shopport - Voice Shopping -->
+                    <div class="project-item card" data-category="ai-ml hackathon">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/shopport.jpg" alt="Shopport - Voice Shopping" class="card-img-top mb-3 zoom-mobile">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/Shopport---Voice-assisted-Shopping-Support" target="_blank" rel="noopener noreferrer" class="animated-link">Shopport</a></h3>
+                                <span class="project-date">Dec 2024</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">A modern voice-controlled shopping application for apparel with a beautiful UI. Shop hands-free using natural voice commands while enjoying a responsive interface.</p>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">TypeScript</span>
+                                    <span class="tag">TailwindCSS</span>
+                                    <span class="tag">NLP</span>
+                                    <span class="tag">PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Portfolio Website (2023) -->
+                    <div class="project-item card" data-category="software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/Port_ss.png" alt="Portfolio Website (2023)" class="card-img-top mb-3 theme-aware-image zoom-mobile" style="width: 100%; height: 200px;" data-light-src="assets/img/Port_ss.png" data-dark-src="assets/img/Port_ss_dark.png">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/astha22.github.io" target="_blank" rel="noopener noreferrer" class="animated-link">Portfolio - 2023</a></h3>
+                                <span class="project-date">Feb 2024 - Mar 2024</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Crafted a dynamic personal portfolio website showcasing professional journey, projects, & technical skills. Features responsive design, dark mode & web analytics integration.</p>
+                                <div class="project-tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">Bootstrap</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: CRM Analytics -->
+                    <div class="project-item card" data-category="analytics">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/CRM_project.png" alt="CRM Analytics" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/CRM-Analytics" target="_blank" rel="noopener noreferrer" class="animated-link">CRM Analytics</a></h3>
+                                <span class="project-date">Mar 2024</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Developed a CRM Analytics project using Python and E-commerce data. Conducted RFM analysis for customer segmentation and implemented the BG/NBD model for CLTV prediction.</p>
+                                <div class="project-tags">
+                                    <span class="tag">CRM</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">RFM</span>
+                                    <span class="tag">BG/NBD</span>
+                                    <span class="tag">Pandas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 9: Hate Speech Detection -->
+                    <div class="project-item card" data-category="ai-ml">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/PR1.png" alt="Hate Speech Detection using Machine Learning" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/Hatespeech-detection-using-different-ml-deep-learning-techniques" target="_blank" rel="noopener noreferrer" class="animated-link">Hate Speech Detection</a></h3>
+                                <span class="project-date">Jun 2023 - Aug 2023</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Developed and compared ML models that can automatically identify and flag hate speech content on social media, making social media a safer and more inclusive space.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">SVM</span>
+                                    <span class="tag">Random Forest</span>
+                                    <span class="tag">LSTM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 10: AutoGrader -->
+                    <div class="project-item card" data-category="software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/autograder.png" alt="AutoGrader" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/Auto_Grader" target="_blank" rel="noopener noreferrer" class="animated-link">AutoGrader</a></h3>
+                                <span class="project-date">Feb 2023 - May 2023</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Robust code evaluation system that efficiently assesses code submissions for an entire class of students by utilizing test cases to provide pass/fail outcomes.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Automation</span>
+                                    <span class="tag">Test cases</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 11: ML for Breast Cancer Diagnosis -->
+                    <div class="project-item card" data-category="ai-ml">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/mlbc.png" alt="ML for Breast Cancer Diagnosis" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/EXPLORING-MACHINE-LEARNING-TECHNIQUES-POTENTIALLY-PREFERABLE-FOR-BREAST-CANCER-DIAGNOSIS" target="_blank" rel="noopener noreferrer" class="animated-link">ML Techniques for Breast Cancer diagnosis</a></h3>
+                                <span class="project-date">Aug 2022 - Dec 2022</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Exploring ML techniques for breast cancer diagnosis, aiming to improve early detection and increase the chances of survival for individuals.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Survey Analysis</span>
+                                    <span class="tag">ML Algorithms</span>
+                                    <span class="tag">SVM</span>
+                                    <span class="tag">Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 12: Symphony Band Management System -->
+                    <div class="project-item card" data-category="software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/sbms.jpg" alt="Symphony Band Management System" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/SujitKilli/SymphonyBand" target="_blank" rel="noopener noreferrer" class="animated-link">Symphony Band Management System</a></h3>
+                                <span class="project-date">Jun 2022 - Aug 2022</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Developed using MySQL, JDBC, Spring Boot, HTML, CSS, and JavaScript to process customer requests, concert allocation, and employee management.</p>
+                                <div class="project-tags">
+                                    <span class="tag">MySQL</span>
+                                    <span class="tag">JDBC</span>
+                                    <span class="tag">SpringBoot</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 13: SearchLite - Web Search Engine -->
+                    <div class="project-item card" data-category="software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/searchlite.jpg" alt="SearchLite - Web Search Engine" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/GiftsonVasanth/OOAD_Final" target="_blank" rel="noopener noreferrer" class="animated-link">SearchLite</a></h3>
+                                <span class="project-date">Jun 2022 - Aug 2022</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">A web search engine built leveraging JavaScript, React, and Python, with a seamless and intuitive search experience.</p>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">HTML/CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 14: Smart Document Tracking System -->
+                    <div class="project-item card" data-category="software-eng">
+                        <div class="card-body d-flex flex-column justify-content-left text-left">
+                            <img src="assets/img/P4.jpg" alt="Smart Document Tracking System" class="card-img-top mb-3 zoom-mobile" style="width: 100%; height: 200px;">
+                            <div>
+                                <h3 class="card-title mb-1"><a href="https://github.com/ASTHA22/SMART-DOCUMENT-TRACKING-SYSTEM" target="_blank" rel="noopener noreferrer" class="animated-link">Smart Document Tracking System</a></h3>
+                                <span class="project-date">Jul 2018 - May 2019</span>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">Ensures document authenticity, tracks document access, & provides real-time alerts for unauthorized access, prioritizing document security.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Mbed</span>
+                                    <span class="tag">FRDM</span>
+                                    <span class="tag">Node-RED</span>
+                                    <span class="tag">PHP/MySQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 15: IOT Device for Breast Cancer Detection -->
+                    <!-- This card was moved to the Research section as per user clarification -->
+
+                    <!-- Project 16: Research Projects will be added here -->
+                </div>
+                
+                <!-- Mobile Carousel Layout -->
+                <div class="projects-wrapper">
+                    <!-- Navigation Arrows -->
+                    <div class="project-nav-arrow project-prev-arrow">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="project-nav-arrow project-next-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="projects-container">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy Projects Section (Imported from Backup) -->
+        <section id="legacy-projects" class="projects legacy-projects-section">
+            <div class="section-content">
+                <h2>Legacy Projects (Backup Style)</h2>
+                <div class="project-grid">
+                    <!-- Example card structure from backup, repeat as needed -->
+                    <div class="project-item">
+                        <img src="assets/project1.jpg" alt="Project 1">
+                        <div class="card-body">
+                            <div>
+                                <h3 class="card-title mb-1">Classic Project One</h3>
+                                <span class="project-date">Jan 2022 - Jun 2022</span>
+                                <p class="card-text">This is an example project from the legacy backup. You can add real content here or import your real projects as needed.</p>
+                                <div class="project-tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="assets/project2.jpg" alt="Project 2">
+                        <div class="card-body">
+                            <div>
+                                <h3 class="card-title mb-1">Classic Project Two</h3>
+                                <span class="project-date">Jul 2021 - Dec 2021</span>
+                                <p class="card-text">Another legacy project example. You can expand this section with more cards or real data from your backup.</p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Flask</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog">
+            <div class="section-content">
+                <h2>My Blog</h2>
+                <div class="blog-grid">
+                    <article class="blog-post">
+                        <img src="assets/blog1.jpg" alt="Blog Post 1">
+                        <div class="post-content">
+                            <span class="post-date">Dec 12, 2024</span>
+                            <h3>The Future of AI in Software Development</h3>
+                            <p>Exploring how artificial intelligence is transforming the way we write code.</p>
+                            <a href="#" class="read-more animated-link">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="assets/blog2.jpg" alt="Blog Post 2">
+                        <div class="post-content">
+                            <span class="post-date">Dec 10, 2024</span>
+                            <h3>Best Practices in Data Science</h3>
+                            <p>Key principles for successful data science projects.</p>
+                            <a href="#" class="read-more animated-link">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="assets/blog3.jpg" alt="Blog Post 3">
+                        <div class="post-content">
+                            <span class="post-date">Dec 8, 2024</span>
+                            <h3>Modern Web Development Trends</h3>
+                            <p>Latest technologies and frameworks in web development.</p>
+                            <a href="#" class="read-more animated-link">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section name-section">
+                <h2>Astha Singh<br>Thakur</h2>
+                <!-- <a href="mailto:asthasingh2066@gmail.com" class="email-link">asthasingh2066@gmail.com</a> -->
+                <a href="#" style="color: #7B68EE;">San Francisco, CA</a>
+                <div class="resume-link">
+                    Also, here's a cool sheet of paper - <a href="Resume/Resume_Astha.pdf" target="_blank" class="animated-link">Resume</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <a href="about.html#experience" class="animated-link">Work</a>
+                <a href="index.html#blog" class="animated-link">Blog</a>
+                <a href="index.html#projects" class="animated-link">Project</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:asthasingh2066@gmail.com" class="animated-link">Email</a>
+                <a href="tel:+14698197543" class="animated-link">Phone</a>
+                <a href="https://calendly.com/asthat/30min" target="_blank" class="animated-link">Calendly</a>
+            </div>
+            <div class="footer-section">
+                <h3>Social</h3>
+                <a href="https://www.linkedin.com/in/astha-t/" target="_blank" class="animated-link">LinkedIn</a>
+                <a href="https://github.com/ASTHA22" target="_blank" class="animated-link">GitHub</a>
+                <a href="https://leetcode.com/u/Astha_22/" target="_blank" class="animated-link">Leetcode</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made with ❤️ by Astha</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const $bigBall = document.querySelector('.cursor__ball--big');
+        const $smallBall = document.querySelector('.cursor__ball--small');
+        
+        // Move the cursor
+        function onMouseMove(e) {
+            gsap.to($bigBall, {
+                duration: 0.4,
+                x: e.clientX - 15,
+                y: e.clientY - 15
+            });
+            gsap.to($smallBall, {
+                duration: 0.1,
+                x: e.clientX - 5,
+                y: e.clientY - 7
+            });
+        }
+
+        // Hover an element
+        function onMouseHover() {
+            gsap.to($bigBall, {
+                duration: 0.3,
+                scale: 2.5
+            });
+        }
+        
+        function onMouseHoverOut() {
+            gsap.to($bigBall, {
+                duration: 0.3,
+                scale: 1
+            });
+        }
+
+        // Listeners
+        document.addEventListener('mousemove', onMouseMove);
+        
+        // Use event delegation for hover effects
+        document.addEventListener('mouseover', function(e) {
+            const target = e.target.closest('a, button, .logo, .nav-links a, .mobile-menu-btn, .theme-toggle, .social-links a, .service-card');
+            if (target) {
+                onMouseHover();
+            }
+        });
+
+        document.addEventListener('mouseout', function(e) {
+            const target = e.target.closest('a, button, .logo, .nav-links a, .mobile-menu-btn, .theme-toggle, .social-links a, .service-card');
+            if (target) {
+                onMouseHoverOut();
+            }
+        });
+    </script>
+</body>
+</html>
