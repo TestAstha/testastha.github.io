@@ -1,0 +1,247 @@
+/* Services Section Styles */
+.services {
+    padding: 4rem 0;
+    background-color: var(--bg-color);
+}
+
+
+/* Services Container & Wrapper */
+.services-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Service Cards */
+.service-card {
+    height: 400px;
+}
+.service-card h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Navigation Controls */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+}
+
+.prev-arrow {
+    left: 0.5rem;
+}
+
+.next-arrow {
+    right: 0.5rem;
+}
+
+.services-dots {
+    display: none;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background: var(--accent-color);
+}
+
+/* Remove hover effect from service bullets */
+.services-container ul li:hover, .services-container ul li:active, .services-container ul li:focus {
+    background: none !important;
+    color: inherit !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    cursor: default !important;
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+    .services {
+        padding: 2rem 2rem;
+    }
+    
+    .services-wrapper {
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+        margin: 0 auto;
+        padding: 0 0.5rem;
+    }
+    
+    .services-container {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 1.2rem !important;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        width: 100vw !important;
+        padding: 1.5rem 0 !important;
+    }
+    
+    .services-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .service-card {
+        flex: 0 0 85vw;
+        max-width: 90vw;
+        min-width: 250px;
+        scroll-snap-align: center;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 0 !important;
+        background: var(--card-bg, #232228);
+    }
+    
+    .nav-arrow {
+        background: transparent;
+        color: var(--text-color);
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        width: auto;
+        height: auto;
+        font-size: 1.5rem;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: static;
+        opacity: 1;
+        transition: color 0.3s;
+        padding: 0.5rem;
+    }
+    .nav-arrow:active, .nav-arrow:focus {
+        outline: none;
+        color: #9870fe;
+    }
+    .nav-arrow[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    .services-wrapper {
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+        margin: 0 auto;
+        padding: 0 0.5rem;
+    }
+}
+
+/* Tablet (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .services-wrapper {
+        padding: 0;
+    }
+    
+    .services-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        grid-template-columns: none;
+        padding-left: 0;
+        /* Hide scrollbar but keep functionality */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .services-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .service-card {
+        flex: 0 0 300px;
+        scroll-snap-align: center;
+        margin-right: 1.5rem;
+    }
+    
+    .nav-arrow {
+        display: flex;
+    }
+    
+    .services-dots {
+        display: flex;
+    }
+}
+
+/* Small Desktop (1200px - 1440px) */
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .services-container {
+        gap: 1rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Medium Desktop (1441px - 1630px) */
+@media (min-width: 1441px) and (max-width: 1630px) {
+    .services-container {
+        gap: 1.25rem;
+    }
+}
+
+/* Desktop (1200px and above) */
+@media (min-width: 1200px) {
+    /* Removed redundant desktop rules for .nav-arrow */
+}
+
+/* Added media query for max-width: 1199px */
+@media (max-width: 1199px) {
+    .nav-arrow {
+        display: flex !important;
+    }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+    .services-container,
+    .services-wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}

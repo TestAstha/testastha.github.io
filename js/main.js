@@ -14,7 +14,7 @@ if (dynamicText) {  // Only run typing animation if element exists
             charIndex--;
         } else {
             const displayText = currentWord.substring(0, charIndex + 1);
-            dynamicText.textContent = displayText + (charIndex < currentWord.length - 1 ? '_' : '');
+            dynamicText.innerHTML = displayText + (charIndex < currentWord.length - 1 ? '<span style="color: #9870fe;">_</span>' : '');
             charIndex++;
         }
 
@@ -60,7 +60,31 @@ function setTheme(theme) {
         moonIcon.classList.toggle('fa-sun', theme === 'light');
         moonIcon.classList.toggle('fa-moon', theme === 'dark');
     }
+    
+    // Update theme-aware images
+    updateThemeAwareImages(theme);
 }
+
+// Function to update theme-aware images based on current theme
+function updateThemeAwareImages(theme) {
+    const themeAwareImages = document.querySelectorAll('.theme-aware-image');
+    
+    themeAwareImages.forEach(img => {
+        const lightSrc = img.getAttribute('data-light-src');
+        const darkSrc = img.getAttribute('data-dark-src');
+        if (theme === 'dark' && darkSrc) {
+            img.src = darkSrc;
+        } else if (lightSrc) {
+            img.src = lightSrc;
+        }
+    });
+}
+
+// Ensure theme-aware images are updated on initial load and theme change
+document.addEventListener('DOMContentLoaded', function() {
+    const initialTheme = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    updateThemeAwareImages(initialTheme);
+});
 
 // Initialize theme
 document.addEventListener('DOMContentLoaded', () => {
@@ -215,137 +239,456 @@ navItems.forEach(item => {
 // Services Carousel
 function initServicesCarousel() {
     const container = document.querySelector('.services-container');
-    const cards = document.querySelectorAll('.service-card');
     const prevBtn = document.querySelector('.prev-arrow');
     const nextBtn = document.querySelector('.next-arrow');
     
-    if (!container || window.innerWidth > 768) return;
+    if (!container) return;
+    
+    // Force recalculation of container width
+    setTimeout(() => {
+        // Check if scrolling is needed
+        const isScrollNeeded = container.scrollWidth > container.clientWidth;
+        
+        // Always show arrows on mobile, tablet, and medium desktop screens
+        if (window.innerWidth <= 1630) {
+            if (prevBtn && nextBtn) {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+        } else {
+            // On larger desktop sizes, only show if scrolling is needed
+            if (prevBtn && nextBtn) {
+                prevBtn.style.display = isScrollNeeded ? 'flex' : 'none';
+                nextBtn.style.display = isScrollNeeded ? 'flex' : 'none';
+            }
+        }
+    }, 100);
 
     let startX;
     let scrollLeft;
     let isDragging = false;
 
-    // Add dots
-    const dotsContainer = document.querySelector('.services-dots');
-    if (!dotsContainer.children.length) {
-        cards.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dotsContainer.appendChild(dot);
-        });
-    }
-
-    const dots = document.querySelectorAll('.dot');
-
-    // Navigation arrows
-    prevBtn.addEventListener('click', () => {
-        const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
-        container.scrollBy({
-            left: -cardWidth,
-            behavior: 'smooth'
-        });
-    });
-
-    nextBtn.addEventListener('click', () => {
-        const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
-        container.scrollBy({
-            left: cardWidth,
-            behavior: 'smooth'
-        });
-    });
-
-    // Touch events
-    container.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-    });
-
-    container.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (x - startX) * 2;
-        container.scrollLeft = scrollLeft - walk;
-    });
-
-    container.addEventListener('touchend', () => {
-        isDragging = false;
-        snapToNearestCard();
-    });
-
-    // Mouse events for desktop testing
+    // Mouse events for dragging
     container.addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
+        container.style.cursor = 'grabbing';
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isDragging = false;
+        container.style.cursor = 'grab';
+    });
+
+    container.addEventListener('mouseup', () => {
+        isDragging = false;
+        container.style.cursor = 'grab';
     });
 
     container.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed
+        container.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch events for mobile
+    container.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - container.offsetLeft;
         const walk = (x - startX) * 2;
         container.scrollLeft = scrollLeft - walk;
     });
 
-    container.addEventListener('mouseup', () => {
-        isDragging = false;
-        snapToNearestCard();
-    });
-
-    container.addEventListener('mouseleave', () => {
-        isDragging = false;
-    });
-
-    // Snap to nearest card
-    function snapToNearestCard() {
-        const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
-        const scrollPosition = container.scrollLeft;
-        const nearestCard = Math.round(scrollPosition / cardWidth);
-        
-        container.scrollTo({
-            left: nearestCard * cardWidth,
-            behavior: 'smooth'
-        });
-    }
-
-    // Update active dot and arrows
-    function updateNavigation() {
-        const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
-        const index = Math.round(container.scrollLeft / cardWidth);
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-
-        // Update arrows
-        prevBtn.style.opacity = index === 0 ? '0.3' : '1';
-        nextBtn.style.opacity = index === cards.length - 1 ? '0.3' : '1';
-    }
-
-    // Dot navigation
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
-            container.scrollTo({
-                left: i * cardWidth,
+    // Arrow navigation
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            container.scrollBy({
+                left: -300,
                 behavior: 'smooth'
             });
         });
-    });
+    }
 
-    container.addEventListener('scroll', updateNavigation);
-    window.addEventListener('resize', updateNavigation);
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            container.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        });
+    }
     
-    // Initial state
-    updateNavigation();
+    // Handle resize
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            const isScrollNeeded = container.scrollWidth > container.clientWidth;
+            
+            // Always show arrows on mobile, tablet, and medium desktop screens
+            if (window.innerWidth <= 1630) {
+                if (prevBtn && nextBtn) {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
+                }
+            } else {
+                // On larger desktop sizes, only show if scrolling is needed
+                if (prevBtn && nextBtn) {
+                    prevBtn.style.display = isScrollNeeded ? 'flex' : 'none';
+                    nextBtn.style.display = isScrollNeeded ? 'flex' : 'none';
+                }
+            }
+        }, 100);
+    });
 }
 
-// Initialize carousel
-window.addEventListener('load', initServicesCarousel);
-window.addEventListener('resize', initServicesCarousel);
+// Project Filtering
+document.addEventListener('DOMContentLoaded', function() {
+    // Project filtering
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    const projectsContainer = document.querySelector('.projects-container');
+    
+    // Function to filter projects
+    function filterProjects(category) {
+        // Show/hide projects based on category
+        projectItems.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category').includes(category)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // Also filter the cloned items in the mobile carousel
+        if (projectsContainer) {
+            const mobileItems = projectsContainer.querySelectorAll('.project-item');
+            mobileItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category').includes(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    }
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const category = btn.getAttribute('data-category');
+            filterProjects(category);
+        });
+    });
+    
+    // Mobile carousel
+    const prevArrow = document.querySelector('.project-prev-arrow');
+    const nextArrow = document.querySelector('.project-next-arrow');
+    
+    // Clone project items for mobile carousel
+    if (projectsContainer) {
+        projectItems.forEach(item => {
+            const clone = item.cloneNode(true);
+            projectsContainer.appendChild(clone);
+        });
+        
+        // Handle arrow clicks
+        if (prevArrow && nextArrow) {
+            prevArrow.addEventListener('click', () => {
+                projectsContainer.scrollBy({
+                    left: -300,
+                    behavior: 'smooth'
+                });
+            });
+            
+            nextArrow.addEventListener('click', () => {
+                projectsContainer.scrollBy({
+                    left: 300,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    }
+    
+    // Show/hide carousel based on screen size
+    const projectGrid = document.querySelector('.project-grid');
+    const projectsWrapper = document.querySelector('.projects-wrapper');
+    
+    function handleResize() {
+        if (window.innerWidth <= 768) {
+            if (projectGrid) projectGrid.style.display = 'none';
+            if (projectsWrapper) projectsWrapper.style.display = 'block';
+        } else {
+            if (projectGrid) projectGrid.style.display = 'grid';
+            if (projectsWrapper) projectsWrapper.style.display = 'none';
+        }
+    }
+    
+    // Initial check
+    handleResize();
+    
+    // Listen for window resize
+    window.addEventListener('resize', handleResize);
+});
+
+// Stats Counter Animation
+function initStatsCounter() {
+    const statsSection = document.querySelector('.stats-section');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    if (!statsSection || !statNumbers.length) return;
+    
+    // Store the target values
+    const targetValues = [];
+    statNumbers.forEach(stat => {
+        const value = parseInt(stat.textContent);
+        targetValues.push(value);
+        // Set initial value to 0
+        stat.textContent = '0';
+    });
+    
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // Function to animate counting
+    function animateCount(index, targetValue) {
+        let currentValue = 0;
+        const duration = 2000; // 2 seconds
+        const interval = 50; // Update every 50ms
+        const increment = targetValue / (duration / interval);
+        
+        const counter = setInterval(() => {
+            currentValue += increment;
+            if (currentValue >= targetValue) {
+                currentValue = targetValue;
+                clearInterval(counter);
+            }
+            statNumbers[index].textContent = Math.floor(currentValue) + '+';
+        }, interval);
+    }
+    
+    // Flag to track if animation has been triggered
+    let animated = false;
+    
+    // Check on scroll
+    function checkScroll() {
+        if (!animated && isInViewport(statsSection)) {
+            animated = true;
+            targetValues.forEach((value, index) => {
+                animateCount(index, value);
+            });
+        }
+    }
+    
+    // Initial check
+    checkScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkScroll);
+}
+
+// Custom Cursor Implementation
+document.addEventListener('DOMContentLoaded', function() {
+    const cursor = document.querySelector('.cursor');
+    const cursorBall = document.querySelector('.cursor__ball--big');
+    const cursorSmall = document.querySelector('.cursor__ball--small');
+    
+    if (cursor && cursorBall && cursorSmall && window.innerWidth > 768) {
+        document.addEventListener('mousemove', e => {
+            cursor.style.display = 'block';
+            
+            // Position the cursor elements at the mouse position
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            // Apply position with transform for better performance
+            cursorBall.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+            
+            // Small cursor follows with slight delay for effect
+            setTimeout(() => {
+                cursorSmall.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+            }, 100);
+        });
+        
+        // Hide cursor when it leaves the window
+        document.addEventListener('mouseout', () => {
+            cursor.style.display = 'none';
+        });
+        
+        document.addEventListener('mouseover', () => {
+            cursor.style.display = 'block';
+        });
+        
+        // Add hover effect for clickable elements
+        const clickables = document.querySelectorAll('a, button, .project-item, .service-card, .nav-links li, .tab-btn');
+        clickables.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                cursorBall.classList.add('cursor-hover');
+                cursorSmall.classList.add('cursor-hover');
+            });
+            
+            element.addEventListener('mouseout', () => {
+                cursorBall.classList.remove('cursor-hover');
+                cursorSmall.classList.remove('cursor-hover');
+            });
+        });
+    }
+});
+
+// Initialize all interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+    initServicesCarousel();
+    initStatsCounter();
+    initResearchTabs();
+});
+
+// Research Tabs Functionality
+function initResearchTabs() {
+    const tabs = document.querySelectorAll('.research-tab');
+    const tabContents = document.querySelectorAll('.research-tab-content');
+    
+    if (tabs.length && tabContents.length) {
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                const content = document.getElementById(tabId + '-content');
+                if (content) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // Initialize research carousels
+    initResearchCarousels();
+}
+
+// Initialize research carousels
+function initResearchCarousels() {
+    initCarousel('patents');
+    initCarousel('publications');
+}
+
+// Initialize individual carousel
+function initCarousel(type) {
+    const slides = document.querySelectorAll(`#${type}-content .research-slide`);
+    const prevBtn = document.getElementById(`${type}-prev`);
+    const nextBtn = document.getElementById(`${type}-next`);
+    const indicators = document.querySelectorAll(`#${type}-indicators .research-indicator`);
+    
+    if (!slides.length || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    
+    // Set initial state
+    updateSlides();
+    
+    // Add event listeners to buttons
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlides();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlides();
+        }
+    });
+    
+    // Add event listeners to indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlides();
+        });
+    });
+    
+    // Update slides and controls
+    function updateSlides() {
+        // Update slides
+        slides.forEach((slide, index) => {
+            if (index === currentIndex) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+        
+        // Update buttons
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slides.length - 1;
+    }
+    
+    // Add swipe support for mobile
+    const carousel = document.querySelector(`#${type}-content .research-carousel`);
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold && currentIndex < slides.length - 1) {
+            // Swipe left - next slide
+            currentIndex++;
+            updateSlides();
+        } else if (touchEndX > touchStartX + swipeThreshold && currentIndex > 0) {
+            // Swipe right - previous slide
+            currentIndex--;
+            updateSlides();
+        }
+    }
+}
 
 // Services section navigation
 const servicesContainer = document.querySelector('.services-container');
@@ -393,3 +736,41 @@ if (prevArrow && nextArrow) {
         });
     });
 }
+
+// --- Project Carousel Population for Small Screens ---
+function syncProjectsCarousel() {
+  const grid = document.querySelector('.project-grid');
+  const carousel = document.querySelector('.projects-container');
+  if (!grid || !carousel) return;
+
+  // Only populate if empty (avoids duplicates)
+  if (window.innerWidth <= 900 && carousel.children.length === 0) {
+    const cards = grid.querySelectorAll('.project-item');
+    cards.forEach(card => {
+      carousel.appendChild(card.cloneNode(true));
+    });
+  }
+}
+window.addEventListener('DOMContentLoaded', syncProjectsCarousel);
+window.addEventListener('resize', syncProjectsCarousel);
+
+// --- Project Carousel Arrow Functionality ---
+function setupProjectCarouselArrows() {
+  // Target ALL project wrappers instead of just the first one
+  document.querySelectorAll('.projects-wrapper').forEach(wrapper => {
+    const container = wrapper.querySelector('.projects-container');
+    const prev = wrapper.querySelector('.project-prev-arrow');
+    const next = wrapper.querySelector('.project-next-arrow');
+    if (!container || !prev || !next) return;
+
+    // Use addEventListener instead of onclick to avoid overwriting
+    prev.addEventListener('click', () => {
+      container.scrollBy({ left: -container.offsetWidth * 0.85, behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      container.scrollBy({ left: container.offsetWidth * 0.85, behavior: 'smooth' });
+    });
+  });
+}
+window.addEventListener('DOMContentLoaded', setupProjectCarouselArrows);
+window.addEventListener('resize', setupProjectCarouselArrows);

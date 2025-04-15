@@ -1,0 +1,183 @@
+/* Services Section Styles */
+.services {
+    padding: 4rem 0;
+    background-color: var(--bg-color);
+}
+
+
+/* Services Container & Wrapper */
+.services-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Service Cards */
+.service-card {
+    height: 400px;
+}
+.service-card h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Navigation Controls */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+}
+
+.prev-arrow {
+    left: 0.5rem;
+}
+
+.next-arrow {
+    right: 0.5rem;
+}
+
+.services-dots {
+    display: none;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background: var(--accent-color);
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+    .services {
+        padding: 2rem 0;
+    }
+    
+    .services-wrapper {
+        padding: 0;
+    }
+    
+    .services-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        grid-template-columns: none;
+        padding: 0 1rem;
+        /* Hide scrollbar but keep functionality */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .services-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .service-card {
+        flex: 0 0 100%;
+        padding: 1.5rem;
+        height: 360px;
+        scroll-snap-align: center;
+        margin: 0 auto;
+    }
+    
+    .nav-arrow {
+        display: flex;
+        z-index: 10;
+    }
+    
+    .services-dots {
+        display: flex;
+    }
+}
+
+/* Tablet (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .services-wrapper {
+        padding: 0;
+    }
+    
+    .services-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        grid-template-columns: none;
+        padding-left: 0;
+        /* Hide scrollbar but keep functionality */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .services-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .service-card {
+        flex: 0 0 300px;
+        scroll-snap-align: center;
+        margin-right: 1.5rem;
+    }
+    
+    .nav-arrow {
+        display: flex;
+    }
+    
+    .services-dots {
+        display: flex;
+    }
+}
+
+/* Small Desktop (1200px - 1440px) */
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .services-container {
+        gap: 1rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Medium Desktop (1441px - 1630px) */
+@media (min-width: 1441px) and (max-width: 1630px) {
+    .services-container {
+        gap: 1.25rem;
+    }
+}

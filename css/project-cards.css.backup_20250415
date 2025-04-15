@@ -1,0 +1,231 @@
+/* Project Cards CSS - Modern, visually striking design */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.project-item {
+    height: auto;
+    min-height: 520px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+.project-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.card-body > div {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(123, 104, 238, 0.1);
+}
+
+.project-date {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+.card-text {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    line-height: 1.6;
+    opacity: 0.85;
+    overflow: visible;
+    text-overflow: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    line-clamp: 4; /* Standard property for compatibility */
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: auto;
+}
+
+.tag {
+    background-color: rgba(240, 240, 245, 0.05);
+    color: rgba(152, 112, 254, 0.7);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(123, 104, 238, 0.1);
+    margin-bottom: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tag:hover {
+    background-color: rgba(123, 104, 238, 0.15);
+    color: #9870fe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(123, 104, 238, 0.15);
+    border-color: rgba(123, 104, 238, 0.3);
+}
+
+.tag:hover::before {
+    transform: translateX(100%);
+}
+
+/* Add a subtle gradient overlay to the cards */
+.project-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, rgba(123, 104, 238, 0.03) 100%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-item:hover::after {
+    opacity: 1;
+}
+
+/* Mobile Carousel Styles */
+@media (max-width: 768px) {
+    .project-grid {
+        display: none;
+    }
+    
+    .projects-wrapper {
+        display: block;
+        position: relative;
+        padding: 0 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .projects-container {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        display: flex;
+        gap: 2rem;
+        padding: 1.5rem 0;
+    }
+    
+    .projects-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .project-item {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+    
+    .project-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        color: var(--text-color);
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+        border: none;
+    }
+    
+    .project-nav-arrow:hover {
+        opacity: 1;
+    }
+    
+    .project-prev-arrow {
+        left: 5px;
+    }
+    
+    .project-next-arrow {
+        right: 5px;
+    }
+}
+
+/* Dark Mode Variables */
+:root {
+    --tag-bg-color: rgba(123, 104, 238, 0.08);
+}
+
+.dark-mode {
+    --tag-bg-color: rgba(123, 104, 238, 0.15);
+}
+
+.dark-mode .project-item {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(123, 104, 238, 0.3);
+}
+
+.dark-mode .project-item:hover {
+    border-color: rgba(123, 104, 238, 0.5);
+}
+
+.dark-mode .project-item::after {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(123, 104, 238, 0.05) 100%);
+}
+
+.dark-mode .tag {
+    background-color: rgba(30, 30, 40, 0.4);
+    color: rgba(152, 112, 254, 0.6);
+    border-color: rgba(123, 104, 238, 0.15);
+}
+
+.dark-mode .tag:hover {
+    background-color: rgba(123, 104, 238, 0.25);
+    color: #9870fe;
+    border-color: rgba(123, 104, 238, 0.4);
+}
