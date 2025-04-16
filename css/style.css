@@ -2397,6 +2397,8 @@ nav {
 
 .about-header {
     flex: 1;
+    text-align: left;
+    margin-bottom: 3rem;
 }
 
 .hero-animation {
@@ -2440,6 +2442,7 @@ nav {
 
 .about-header {
     text-align: left;
+    margin-bottom: 2.5rem;
 }
 
 .about-header h1,
