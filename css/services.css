@@ -28,57 +28,34 @@
     overflow-wrap: break-word;
     hyphens: auto;
 }
+.service-card i {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+    display: block;
+    text-align: left;
+}
 
 /* Navigation Controls */
-.nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: none;
-    border-radius: 50%;
-    display: none !important;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    color: var(--text-color);
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.nav-arrow:hover {
-    opacity: 1;
-}
-
-.prev-arrow {
-    left: 0.5rem;
-}
-
-.next-arrow {
-    right: 0.5rem;
-}
-
 .services-dots {
-    display: none;
+    display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: var(--secondary-color);
+    background: var(--border-color);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .dot.active {
-    background: var(--accent-color);
+    background-color: #9870fe;
 }
 
 /* Remove hover effect from service bullets */
@@ -93,79 +70,56 @@
 /* Mobile (up to 768px) */
 @media (max-width: 768px) {
     .services {
-        padding: 2rem 2rem;
+        padding: 2rem 0;
     }
-    
+
     .services-wrapper {
-        position: relative;
-        width: 100vw;
-        overflow: hidden;
-        margin: 0 auto;
-        padding: 0 0.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
     }
-    
+
     .services-container {
-        display: flex !important;
-        flex-direction: row !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        gap: 1.2rem !important;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        width: 100vw !important;
-        padding: 1.5rem 0 !important;
+        flex: 1 1 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        grid-template-columns: none;
+        padding: 0 1rem;
+        /* Hide scrollbar but keep functionality */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
-    
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
     .services-container::-webkit-scrollbar {
         display: none;
     }
-    
+
     .service-card {
-        flex: 0 0 85vw;
-        max-width: 90vw;
-        min-width: 250px;
+        flex: 0 0 100%;
+        padding: 1.5rem;
+        height: 360px;
         scroll-snap-align: center;
+        margin: 0 auto;
         border-radius: 16px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         box-sizing: border-box;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        padding: 0 !important;
-        background: var(--card-bg, #232228);
+        background: var(--card-bg);
     }
-    
-    .nav-arrow {
-        background: transparent;
-        color: var(--text-color);
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-        width: auto;
-        height: auto;
+    .service-card i {
         font-size: 1.5rem;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        position: static;
-        opacity: 1;
-        transition: color 0.3s;
-        padding: 0.5rem;
+        margin-bottom: 1rem;
     }
-    .nav-arrow:active, .nav-arrow:focus {
-        outline: none;
-        color: #9870fe;
-    }
-    .nav-arrow[disabled] {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-    .services-wrapper {
-        position: relative;
-        width: 100vw;
-        overflow: hidden;
-        margin: 0 auto;
-        padding: 0 0.5rem;
+
+    .services-dots {
+        margin-top: 1rem;
     }
 }
 
@@ -197,14 +151,6 @@
         scroll-snap-align: center;
         margin-right: 1.5rem;
     }
-    
-    .nav-arrow {
-        display: flex;
-    }
-    
-    .services-dots {
-        display: flex;
-    }
 }
 
 /* Small Desktop (1200px - 1440px) */
@@ -227,14 +173,10 @@
 
 /* Desktop (1200px and above) */
 @media (min-width: 1200px) {
-    /* Removed redundant desktop rules for .nav-arrow */
 }
 
 /* Added media query for max-width: 1199px */
 @media (max-width: 1199px) {
-    .nav-arrow {
-        display: flex !important;
-    }
 }
 
 /* Mobile (up to 768px) */
