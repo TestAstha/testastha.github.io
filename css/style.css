@@ -1109,16 +1109,33 @@ footer {
     margin: 0;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1199px) {
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem 3rem;
+        justify-items: start;
+        align-items: start;
+        padding: 2rem 3vw;
+        text-align: left;
     }
-    
-    .name-section {
+    .footer-section {
+        margin-bottom: 0;
+        margin-top: 0;
+        gap: 0.7rem;
+    }
+    .footer-bottom {
         grid-column: 1 / -1;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .name-section {
+      grid-column: 1 / -1;
+      text-align: left; /* or center, your choice */
+      margin-bottom: 2rem;
     }
 }
+
 
 @media (max-width: 768px) {
     .footer-content {
