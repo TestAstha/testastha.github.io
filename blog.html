@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Astha's Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/blog.css" />
+</head>
+<body>
+  <div class="cursor">
+    <div class="cursor__ball cursor__ball--big">
+      <svg height="24" width="24">
+        <circle cx="12" cy="12" r="9" stroke-width="0"></circle>
+      </svg>
+    </div>
+    <div class="cursor__ball cursor__ball--small">
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+      </svg>
+    </div>
+  </div>
+  <header>
+    <!-- Add your navigation/header here -->
+  </header>
+  <main class="blog-page-detailed exact-ref">
+    <h1>All Blogs</h1>
+    <div class="blog-categories-scroll">
+      <button class="blog-cat-btn active" data-category="featured">Featured</button>
+      <button class="blog-cat-btn" data-category="medtech">MedTech</button>
+      <button class="blog-cat-btn" data-category="crm-analytics">CRM Analytics</button>
+      <button class="blog-cat-btn" data-category="trends">Trends</button>
+      <button class="blog-cat-btn" data-category="events">Events</button>
+      <button class="blog-cat-btn" data-category="hackathons">Hackathons</button>
+      <button class="blog-cat-btn" data-category="updates">Updates</button>
+    </div>
+    <div class="blog-grid-detailed exact-ref">
+      <article class="blog-post-detailed exact-ref">
+        <div class="blog-img-aspect">
+          <img src="assets/blog3.jpg" alt="Blog 3" />
+          <div class="blog-overlay">
+            <span class="blog-category pill">MedTech</span>
+            <h3>AI in Healthcare: Real-World Impact</h3>
+            <span class="post-date">Nov 28, 2024</span>
+            <p>How machine learning is transforming patient outcomes in modern hospitals.</p>
+            <a href="blog-detail.html" class="read-more">Read more</a>
+          </div>
+        </div>
+      </article>
+      <article class="blog-post-detailed exact-ref">
+        <div class="blog-img-aspect">
+          <img src="assets/blog2.jpg" alt="Blog 2" />
+          <div class="blog-overlay">
+            <span class="blog-category pill">CRM Analytics</span>
+            <h3>Best Practices in Data Science</h3>
+            <span class="post-date">Dec 10, 2024</span>
+            <p>Key principles for successful data science projects.</p>
+            <a href="blog-detail.html" class="read-more">Read more</a>
+          </div>
+        </div>
+      </article>
+      <article class="blog-post-detailed exact-ref">
+        <div class="blog-img-aspect">
+          <img src="assets/blog1.jpg" alt="Blog 1" />
+          <div class="blog-overlay">
+            <span class="blog-category pill">Trends</span>
+            <h3>The Future of AI in Software Development</h3>
+            <span class="post-date">Dec 12, 2024</span>
+            <p>Exploring how artificial intelligence is transforming the way we write code.</p>
+            <a href="blog-detail.html" class="read-more">Read more</a>
+          </div>
+        </div>
+      </article>
+      <article class="blog-post-detailed exact-ref">
+        <div class="blog-img-aspect">
+          <img src="assets/blog4.jpg" alt="Blog 4" />
+          <div class="blog-overlay">
+            <span class="blog-category pill">Events</span>
+            <h3>Speaking at Global AI Summit</h3>
+            <span class="post-date">Nov 15, 2024</span>
+            <p>Key takeaways and experiences from my recent talk.</p>
+            <a href="blog-detail.html" class="read-more">Read more</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+  <footer>
+    <!-- Add your footer here -->
+  </footer>
+  <script src="js/blog.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

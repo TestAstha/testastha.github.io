@@ -1,8 +1,8 @@
 // Projects Carousel (Research Section Style)
 (function() {
-  // Only run on mobile (carousel visible)
-  function isMobile() {
-    return window.innerWidth <= 768 && document.querySelector('.projects-carousel-wrapper')?.style.display !== 'none';
+  // Only run on mobile or tablet (carousel visible)
+  function isMobileOrTablet() {
+    return window.innerWidth <= 1199 && document.querySelector('.projects-carousel-wrapper')?.style.display !== 'none';
   }
 
   function getFilteredSlides(category) {
@@ -33,7 +33,7 @@
   }
 
   function initProjectsCarousel(category = 'all') {
-    if (!isMobile()) return;
+    if (!isMobileOrTablet()) return;
     const slides = getFilteredSlides(category);
     renderCarousel(slides);
     let currentIndex = 0;
@@ -98,7 +98,7 @@
 
   // Listen for tab-btn clicks
   document.addEventListener('DOMContentLoaded', function() {
-    if (!isMobile()) return;
+    if (!isMobileOrTablet()) return;
     let activeCategory = 'all';
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', function() {
@@ -111,7 +111,7 @@
 
   // Re-init on resize
   window.addEventListener('resize', function() {
-    if (isMobile()) {
+    if (isMobileOrTablet()) {
       let activeBtn = document.querySelector('.tab-btn.active');
       let category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
       initProjectsCarousel(category);
