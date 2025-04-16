@@ -191,27 +191,6 @@
 
 /* Added media query for max-width: 1199px */
 @media (max-width: 1199px) {
-    .services-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-    }
-    .services-container {
-        flex: 1 1 auto;
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: 0 1rem;
-    }
-    .research-control.prev-arrow,
-    .research-control.next-arrow {
-        position: static;
-        margin: 0 0.5rem;
-        align-self: center;
-    }
 }
 
 /* Mobile (up to 768px) */
