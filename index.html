@@ -455,15 +455,20 @@
                 </div>
                 
                 <!-- Mobile Carousel Layout -->
-                <div class="projects-wrapper">
-                    <!-- Navigation Arrows -->
-                    <div class="project-nav-arrow project-prev-arrow">
-                        <i class="fas fa-chevron-left"></i>
+                <div class="projects-carousel-wrapper">
+                    <div class="projects-carousel">
+                        <!-- Slides will be dynamically populated here -->
                     </div>
-                    <div class="project-nav-arrow project-next-arrow">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="projects-container">
+                    <div class="projects-controls">
+                        <button class="projects-control project-prev-slide btn btn-prev" id="projects-prev" aria-label="Previous project">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="projects-indicators" id="projects-indicators">
+                            <!-- Dots will be dynamically populated here -->
+                        </div>
+                        <button class="projects-control project-next-slide btn btn-next" id="projects-next" aria-label="Next project">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -540,6 +545,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/projects-carousel.js"></script>
     <script>
         const $bigBall = document.querySelector('.cursor__ball--big');
         const $smallBall = document.querySelector('.cursor__ball--small');
