@@ -30,7 +30,8 @@
     --elevated-bg: #f8f9fa;
     --text-color: #3F3E3E;
     --accent-color: #F3F3F3;
-    --secondary-color: #3F3E3E;
+    --primary-color: #9870fe; /* San Francisco purple */
+    --secondary-color: #666666;
     --border-color: rgba(0, 0, 0, 0.15);
     --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     --hover-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1069,6 +1070,11 @@ footer {
     color: var(--text-color);
     text-decoration: none;
     border-bottom: 1px solid var(--text-color);
+}
+
+.name-section .resume-link a:hover {
+    color: var(--primary-color);
+    transition: color 0.3s;
 }
 
 .footer-section h3 {
