@@ -262,7 +262,7 @@
                                     <span class="tag">PostgreSQL</span>
                                     <span class="tag">Streamlit</span>
                                 </div>
-                            </div>
+                            </div>  
                         </div>
                     </div>
 
@@ -478,51 +478,84 @@
             <div class="section-content">
                 <div class="blog-header-row" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.6em;">
                     <h2 style="margin: 0;">My Blogs</h2>
-                    <a href="blog.html" class="view-all-posts-btn view-all-link">View All Posts</a>
+                    <a href="blog.html" class="view-all-posts-btn view-all-link">
+                        <span class="view-all-text">View All Posts</span>
+                        <span class="view-all-arrow">→</span>
+                    </a>
                 </div>
+                <!-- Blog Carousel for Mobile -->
+                <div class="blog-carousel-wrapper" style="display:none">
+                    <div class="blog-carousel"></div>
+                    <div class="blog-controls">
+                        <button class="blog-control blog-prev-slide btn btn-prev" id="blog-prev" aria-label="Previous blog">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="blog-indicators" id="blog-indicators"></div>
+                        <button class="blog-control blog-next-slide btn btn-next" id="blog-next" aria-label="Next blog">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- End Blog Carousel for Mobile -->
                 <div class="blog-grid-detailed exact-ref">
                     <article class="blog-post-detailed exact-ref">
                         <div class="blog-img-aspect">
-                            <img src="assets/blog1.jpg" alt="Blog Post 1">
+                            <img src="assets/img/hac_ss.jpg" alt="Blog Post 1">
                         </div>
                         <div class="blog-card-content">
-                            <h3>How to find remote job</h3>
-                            <span class="post-date">Mon, Jun 2023</span>
-                            <p>Thinking about starting a blog, but not sure what to write about? If you have an interest in smart devices, gadget</p>
-                            <a href="#" class="read-more">Read more</a>
+                            <h3>
+                                <a href="https://www.linkedin.com/posts/astha-t_hackforsocialimpact-affordablehousing-techforgood-activity-7262641440713826305-njLv/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" target="_blank" rel="noopener noreferrer">
+                                    Top 3 - Hack for Social Impact
+                                </a>
+                            </h3>
+                            <span class="post-date">Nov 2024</span>
+                            <p>Top 3 at Hack for Social Impact by Terner Institute, with Fetch.ai, for Fetch Compare Build—a tech solution simplifying California housing codes to support affordable housing.</p>
+                            <a href="https://www.linkedin.com/posts/astha-t_hackforsocialimpact-affordablehousing-techforgood-activity-7262641440713826305-njLv/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" class="read-more" target="_blank" rel="noopener noreferrer">Read more</a>
                         </div>
                     </article>
                     <article class="blog-post-detailed exact-ref">
                         <div class="blog-img-aspect">
-                            <img src="assets/blog2.jpg" alt="Blog Post 2">
+                            <img src="assets/gallery/img13.jpg" alt="Blog Post 1">
                         </div>
                         <div class="blog-card-content">
-                            <h3>Wake up early consistently</h3>
-                            <span class="post-date">Mon, Jun 2023</span>
-                            <p>Waking up early every day can be challenging, but with consistent effort and discipline, it is possible.</p>
-                            <a href="#" class="read-more">Read more</a>
+                            <h3>
+                                <a href="https://www.linkedin.com/posts/astha-t_sfpython-python-machinelearning-activity-7283649231607775232-as_m/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" target="_blank" rel="noopener noreferrer">
+                                   My Talk at SF Python!
+                                </a>
+                            </h3>
+                            <span class="post-date">Jan 2025</span>
+                            <p>Spoke at SF Python on my journey from Machine Learning to Full-Stack Development, sharing insights on Python, AI, and LLMs with the vibrant tech community.</p>
+                            <a href="https://www.linkedin.com/posts/astha-t_sfpython-python-machinelearning-activity-7283649231607775232-as_m/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" class="read-more" target="_blank" rel="noopener noreferrer">Read more</a>
                         </div>
                     </article>
                     <article class="blog-post-detailed exact-ref">
                         <div class="blog-img-aspect">
-                            <img src="assets/blog3.jpg" alt="Blog Post 3">
+                            <img src="assets/blog/ml.png" alt="Blog Post 1">
                         </div>
                         <div class="blog-card-content">
-                            <h3>The Moon outshines the Sun</h3>
-                            <span class="post-date">Mon, Jun 2023</span>
-                            <p>Across all wavelengths of light, the Sun is brighter than the Moon. Until we went to the highest energies</p>
-                            <a href="#" class="read-more">Read more</a>
+                            <h3>
+                                <a href="https://www.linkedin.com/pulse/from-diagnosis-precision-future-ai-breast-cancer-detection-thakur-s3z7c/?trackingId=8qE8oUl1LiA%2F%2FOH1G0i6Dw%3D%3D" target="_blank" rel="noopener noreferrer">
+                                    Fighting Cancer with ML
+                                </a>
+                            </h3>
+                            <span class="post-date">Dec 2024</span>
+                            <p>Concluded my ML in Breast Cancer series with key insights on SVMs, diagnostic challenges, and the future of AI-human collaboration in healthcare</p>
+                            <a href="https://www.linkedin.com/pulse/from-diagnosis-precision-future-ai-breast-cancer-detection-thakur-s3z7c/?trackingId=8qE8oUl1LiA%2F%2FOH1G0i6Dw%3D%3D" class="read-more" target="_blank" rel="noopener noreferrer">Read more</a>
                         </div>
                     </article>
                     <article class="blog-post-detailed exact-ref">
                         <div class="blog-img-aspect">
-                            <img src="assets/blog4.jpg" alt="Blog Post 4">
+                            <img src="assets/blog/vcn.jpg" alt="Blog Post 1">
                         </div>
                         <div class="blog-card-content">
-                            <h3>A Week In The Mysterious</h3>
-                            <span class="post-date">Mon, Jun 2023</span>
-                            <p>Radiation. Government conspiracy. Mass hysteria. There are plenty of theories as to why the residents of a tiny Kazakh</p>
-                            <a href="#" class="read-more">Read more</a>
+                            <h3>
+                                <a href="https://www.linkedin.com/posts/astha-t_networking-ai-founders-activity-7293433813802618880-Ueef/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" target="_blank" rel="noopener noreferrer">
+                                    Co-Host - SF AI Founders & VC Networking Event
+                                </a>
+                            </h3>
+                            <span class="post-date">Feb 2025</span>
+                            <p>Co-hosted the SF AI Founders & VC Networking event—an inspiring night of conversations, connections, and collaboration in the AI space!</p>
+                            <a href="https://www.linkedin.com/posts/astha-t_networking-ai-founders-activity-7293433813802618880-Ueef/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" class="read-more" target="_blank" rel="noopener noreferrer">Read more</a>
                         </div>
                     </article>
                 </div>
@@ -566,6 +599,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/projects-carousel.js"></script>
+    <script src="js/blog-carousel.js"></script>
     <script>
         const $bigBall = document.querySelector('.cursor__ball--big');
         const $smallBall = document.querySelector('.cursor__ball--small');
