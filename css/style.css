@@ -424,6 +424,11 @@ section::after {
     }
 }
 
+@media (max-width: 768px) {
+    .section-content {
+        padding: 0 2rem;
+    }
+
     .hero-content {
         grid-template-columns: repeat(2, 1fr);
         padding: 0 1rem;
