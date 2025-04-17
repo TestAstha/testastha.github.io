@@ -5,6 +5,10 @@
     return window.innerWidth <= 1199 && document.querySelector('.projects-carousel-wrapper')?.style.display !== 'none';
   }
 
+  function isTablet() {
+    return window.innerWidth >= 769 && window.innerWidth <= 1199;
+  }
+
   function getFilteredSlides(category) {
     // Get all project-item elements from the grid (source of truth)
     const allSlides = Array.from(document.querySelectorAll('.project-grid .project-item'));
@@ -18,18 +22,37 @@
     if (!carousel || !indicatorsContainer) return;
     carousel.innerHTML = '';
     indicatorsContainer.innerHTML = '';
-    slides.forEach((slide, i) => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'projects-slide';
-      if (i === 0) wrapper.classList.add('active');
-      wrapper.appendChild(slide.cloneNode(true));
-      carousel.appendChild(wrapper);
-      // Indicator
-      const dot = document.createElement('span');
-      dot.className = 'projects-indicator' + (i === 0 ? ' active' : '');
-      dot.dataset.index = i;
-      indicatorsContainer.appendChild(dot);
-    });
+
+    if (isTablet()) {
+      // 2 cards per slide on tablet
+      for (let i = 0; i < slides.length; i += 2) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'projects-slide';
+        if (i === 0) wrapper.classList.add('active');
+        wrapper.appendChild(slides[i].cloneNode(true));
+        if (slides[i + 1]) wrapper.appendChild(slides[i + 1].cloneNode(true));
+        carousel.appendChild(wrapper);
+        // Indicator for each slide (pair)
+        const dot = document.createElement('span');
+        dot.className = 'projects-indicator' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i / 2;
+        indicatorsContainer.appendChild(dot);
+      }
+    } else {
+      // 1 card per slide (mobile/desktop)
+      slides.forEach((slide, i) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'projects-slide';
+        if (i === 0) wrapper.classList.add('active');
+        wrapper.appendChild(slide.cloneNode(true));
+        carousel.appendChild(wrapper);
+        // Indicator
+        const dot = document.createElement('span');
+        dot.className = 'projects-indicator' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        indicatorsContainer.appendChild(dot);
+      });
+    }
   }
 
   function initProjectsCarousel(category = 'all') {

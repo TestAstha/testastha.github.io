@@ -103,16 +103,18 @@ main {
 }
 
 section, .section-content, .projects, .blog, .services, .about, .contact, .footer-content {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  padding-top: 60px !important;
-  padding-bottom: 60px !important;
+  padding: 60px 10px;
   box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+  section, .section-content, .projects, .blog, .services, .about, .contact, .footer-content {
+    padding: 6rem 4rem;
+  }
 }
 
 section {
     margin: 0 !important;
-    padding: 6rem 2rem;
     border: none !important;
     outline: none !important;
     box-sizing: border-box;
@@ -3220,3 +3222,9 @@ nav {
     background-color: #9870fe;
   }
 }
+
+@media (min-width: 1024px) {
+    .social-links {
+      margin-right: 3rem;
+    }
+  }
