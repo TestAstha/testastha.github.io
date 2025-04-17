@@ -3167,8 +3167,8 @@ nav {
     display: none;
   }
   .blog-slide {
-    flex: 0 0 90vw;
-    max-width: 95vw;
+    flex: 0 0 85vw;
+    max-width: 85vw;
     min-width: 260px;
     scroll-snap-align: center;
     border-radius: 16px;
