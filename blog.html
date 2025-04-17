@@ -14,7 +14,7 @@
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
 </head>
-<body>
+<body class="blog-page">
   <div class="cursor">
     <div class="cursor__ball cursor__ball--big">
       <svg height="24" width="24">
@@ -50,78 +50,80 @@
       </div>
     </div>
   </nav>
-  <main class="blog-page-detailed exact-ref">
-    <!-- HERO SECTION -->
-    <section class="blog-hero">
-      <h1 class="blog-hero-title">Welcome to My Blog</h1>
-      <p class="blog-hero-desc">Insights on AI, HealthTech, Analytics, Events, and more. Explore my latest thoughts and industry trends!</p>
-    </section>
-    <!-- CATEGORY FILTER -->
-    <div class="blog-categories-scroll">
-      <button class="blog-cat-btn active" data-category="featured">Featured</button>
-      <button class="blog-cat-btn" data-category="medtech">MedTech</button>
-      <button class="blog-cat-btn" data-category="crm-analytics">CRM Analytics</button>
-      <button class="blog-cat-btn" data-category="trends">Trends</button>
-      <button class="blog-cat-btn" data-category="events">Events</button>
-      <button class="blog-cat-btn" data-category="hackathons">Hackathons</button>
-      <button class="blog-cat-btn" data-category="updates">Updates</button>
-    </div>
-    <!-- RECENT BLOG FEATURED -->
-    <section class="blog-recent-featured">
-      <article class="blog-post-detailed exact-ref featured">
-        <div class="blog-img-aspect">
-          <img src="assets/blog3.jpg" alt="AI in Healthcare" />
-        </div>
-        <div class="blog-card-content">
-          <span class="blog-category pill">MedTech</span>
-          <h3><a href="blog-detail.html">AI in Healthcare: Real-World Impact</a></h3>
-          <span class="post-date">Nov 28, 2024</span>
-          <p>How machine learning is transforming patient outcomes in modern hospitals.</p>
-          <a href="blog-detail.html" class="read-more">Read more</a>
-        </div>
-      </article>
-    </section>
-    <!-- BLOG GRID -->
-    <div class="blog-grid-detailed exact-ref">
-      <article class="blog-post-detailed exact-ref" data-category="crm-analytics">
-        <div class="blog-img-aspect">
-          <img src="assets/blog2.jpg" alt="Best Practices in Data Science" />
-        </div>
-        <div class="blog-card-content">
-          <span class="blog-category pill">CRM Analytics</span>
-          <h3><a href="blog-detail.html">Best Practices in Data Science</a></h3>
-          <span class="post-date">Dec 10, 2024</span>
-          <p>Key principles for successful data science projects.</p>
-          <a href="blog-detail.html" class="read-more">Read more</a>
-        </div>
-      </article>
-      <article class="blog-post-detailed exact-ref" data-category="trends">
-        <div class="blog-img-aspect">
-          <img src="assets/blog1.jpg" alt="Future of AI" />
-        </div>
-        <div class="blog-card-content">
-          <span class="blog-category pill">Trends</span>
-          <h3><a href="blog-detail.html">The Future of AI in Software Development</a></h3>
-          <span class="post-date">Dec 12, 2024</span>
-          <p>Exploring how artificial intelligence is transforming the way we write code.</p>
-          <a href="blog-detail.html" class="read-more">Read more</a>
-        </div>
-      </article>
-      <article class="blog-post-detailed exact-ref" data-category="events">
-        <div class="blog-img-aspect">
-          <img src="assets/blog4.jpg" alt="Global AI Summit" />
-        </div>
-        <div class="blog-card-content">
-          <span class="blog-category pill">Events</span>
-          <h3><a href="blog-detail.html">Speaking at Global AI Summit</a></h3>
-          <span class="post-date">Nov 15, 2024</span>
-          <p>Key takeaways and experiences from my recent talk.</p>
-          <a href="blog-detail.html" class="read-more">Read more</a>
-        </div>
-      </article>
-      <!-- Add more blog-post-detailed articles as needed -->
-    </div>
-  </main>
+  <div class="blog-title-section">
+    <h1 class="blog-main-title">Blog</h1>
+    <div class="blog-main-desc">Welcome to my blog — a space where I share thoughts, projects, and updates from the world of tech.</div>
+  </div>
+  <div class="lovable-blog-layout">
+    <aside class="lovable-sidebar">
+      <div class="project-categories">
+        <button class="tab-btn">All</button>
+        <button class="tab-btn active">Featured</button>
+        <button class="tab-btn">Hackathons</button>
+        <button class="tab-btn">Events</button>
+        <button class="tab-btn">HealthTech</button>
+        <button class="tab-btn">Analytics</button>
+        <button class="tab-btn">Trends</button>
+        <button class="tab-btn">Updates</button>
+      </div>
+    </aside>
+    <main class="lovable-main">
+      <div class="lovable-blog-grid flat-blog-grid">
+        <!-- Blog Card 1: Hackathons -->
+        <a href="https://www.linkedin.com/posts/astha-t_hackforsocialimpact-affordablehousing-techforgood-activity-7262641440713826305-njLv/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" class="flat-blog-card" data-category="all hackathons featured" target="_blank">
+          <img src="assets/img/hac_ss.jpg" class="flat-blog-img" alt="Top 3 - Hack for Social Impact" />
+          <div class="flat-blog-content">
+            <span class="flat-blog-category">Hackathons</span>
+            <h2 class="flat-blog-title">Top 3 - Hack for Social Impact</h2>
+            <div class="flat-blog-meta-row">
+              <span class="flat-blog-date">Nov 10, 2024</span>
+            </div>
+            <div class="flat-blog-desc">Top 3 at Hack for Social Impact by Terner Institute, with Fetch.ai, for Fetch Compare Build—a tech solution simplifying California housing codes to support affordable housing.</div>
+            <span class="flat-blog-readmore">Read more →</span>
+          </div>
+        </a>
+        <!-- Blog Card 2: Events -->
+        <a href="https://www.linkedin.com/posts/astha-t_sfpython-python-machinelearning-activity-7283649231607775232-as_m/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" class="flat-blog-card blog-img-zoom" data-category="all events featured" target="_blank">
+          <img src="assets/gallery/img13.jpg" class="flat-blog-img" alt="My Talk at SF Python!" />
+          <div class="flat-blog-content">
+            <span class="flat-blog-category">Events</span>
+            <h2 class="flat-blog-title">My Talk at SF Python!</h2>
+            <div class="flat-blog-meta-row">
+              <span class="flat-blog-date">Jan 8, 2025</span>
+            </div>
+            <div class="flat-blog-desc">Spoke at SF Python on my journey from Machine Learning to Full-Stack Development, sharing insights on Python, AI, and LLMs with the vibrant tech community.</div>
+            <span class="flat-blog-readmore">Read more →</span>
+          </div>
+        </a>
+        <!-- Blog Card 3: HealthTech -->
+        <a href="https://www.linkedin.com/pulse/from-diagnosis-precision-future-ai-breast-cancer-detection-thakur-s3z7c/?trackingId=8qE8oUl1LiA%2F%2FOH1G0i6Dw%3D%3D" class="flat-blog-card" data-category="all healthtech featured" target="_blank">
+          <img src="assets/blog/ml.png" class="flat-blog-img" alt="Fighting Cancer with ML" />
+          <div class="flat-blog-content">
+            <span class="flat-blog-category">HealthTech</span>
+            <h2 class="flat-blog-title">Fighting Cancer with ML</h2>
+            <div class="flat-blog-meta-row">
+              <span class="flat-blog-date">Dec 17, 2024</span>
+            </div>
+            <div class="flat-blog-desc">Concluded my ML in Breast Cancer series with key insights on SVMs, diagnostic challenges, and the future of AI-human collaboration in healthcare.</div>
+            <span class="flat-blog-readmore">Read more →</span>
+          </div>
+        </a>
+        <!-- Blog Card 4: Events -->
+        <a href="https://www.linkedin.com/posts/astha-t_networking-ai-founders-activity-7293433813802618880-Ueef/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJymUEBeKljoFGj_Bi_bk-UJr33os1g2X8" class="flat-blog-card blog-img-up" data-category="all events featured" target="_blank">
+          <img src="assets/blog/vcn.jpg" class="flat-blog-img" alt="Co-Host - SF AI Founders & VC Networking Event" />
+          <div class="flat-blog-content">
+            <span class="flat-blog-category">Events</span>
+            <h2 class="flat-blog-title">Co-Host - SF AI Founders & VC Networking Event</h2>
+            <div class="flat-blog-meta-row">
+              <span class="flat-blog-date">Feb 7, 2025</span>
+            </div>
+            <div class="flat-blog-desc">Co-hosted the SF AI Founders & VC Networking event—an inspiring night of conversations, connections, and collaboration in the AI space!</div>
+            <span class="flat-blog-readmore">Read more →</span>
+          </div>
+        </a>
+      </div>
+    </main>
+  </div>
   <!-- FOOTER -->
   <footer>
     <div class="footer-content">
