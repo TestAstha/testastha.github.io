@@ -167,9 +167,10 @@
     display: none;
   }
   .project-item {
-    flex: 0 0 85vw;
-    max-width: 90vw;
-    min-width: 250px;
+    flex: 0 0 48vw;
+    max-width: 50vw;
+    min-width: 300px;
+    margin: 0 auto 1.2rem auto;
     scroll-snap-align: center;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
