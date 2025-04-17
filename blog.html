@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | Astha's Portfolio</title>
+  <title>Blog | Astha Singh Thakur</title>
+  <link rel="icon" href="assets/larger-favicon.png" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/blog.css" />
+  <link rel="stylesheet" href="css/blog-page.css" />
+  <link rel="stylesheet" href="css/project-cards.css" />
+  <link rel="stylesheet" href="css/services.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
 </head>
 <body>
   <div class="cursor">
@@ -20,11 +27,36 @@
       </svg>
     </div>
   </div>
-  <header>
-    <!-- Add your navigation/header here -->
-  </header>
+  <!-- NAVIGATION BAR (copied from index.html for consistency) -->
+  <nav>
+    <div class="nav-content">
+      <div class="nav-left">
+        <div class="logo">
+          <span>Astha.</span>
+        </div>
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon moon-icon"></i>
+        </button>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="Resume/Resume_Astha.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </nav>
   <main class="blog-page-detailed exact-ref">
-    <h1>All Blogs</h1>
+    <!-- HERO SECTION -->
+    <section class="blog-hero">
+      <h1 class="blog-hero-title">Welcome to My Blog</h1>
+      <p class="blog-hero-desc">Insights on AI, HealthTech, Analytics, Events, and more. Explore my latest thoughts and industry trends!</p>
+    </section>
+    <!-- CATEGORY FILTER -->
     <div class="blog-categories-scroll">
       <button class="blog-cat-btn active" data-category="featured">Featured</button>
       <button class="blog-cat-btn" data-category="medtech">MedTech</button>
@@ -34,59 +66,95 @@
       <button class="blog-cat-btn" data-category="hackathons">Hackathons</button>
       <button class="blog-cat-btn" data-category="updates">Updates</button>
     </div>
+    <!-- RECENT BLOG FEATURED -->
+    <section class="blog-recent-featured">
+      <article class="blog-post-detailed exact-ref featured">
+        <div class="blog-img-aspect">
+          <img src="assets/blog3.jpg" alt="AI in Healthcare" />
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category pill">MedTech</span>
+          <h3><a href="blog-detail.html">AI in Healthcare: Real-World Impact</a></h3>
+          <span class="post-date">Nov 28, 2024</span>
+          <p>How machine learning is transforming patient outcomes in modern hospitals.</p>
+          <a href="blog-detail.html" class="read-more">Read more</a>
+        </div>
+      </article>
+    </section>
+    <!-- BLOG GRID -->
     <div class="blog-grid-detailed exact-ref">
-      <article class="blog-post-detailed exact-ref">
+      <article class="blog-post-detailed exact-ref" data-category="crm-analytics">
         <div class="blog-img-aspect">
-          <img src="assets/blog3.jpg" alt="Blog 3" />
-          <div class="blog-overlay">
-            <span class="blog-category pill">MedTech</span>
-            <h3>AI in Healthcare: Real-World Impact</h3>
-            <span class="post-date">Nov 28, 2024</span>
-            <p>How machine learning is transforming patient outcomes in modern hospitals.</p>
-            <a href="blog-detail.html" class="read-more">Read more</a>
-          </div>
+          <img src="assets/blog2.jpg" alt="Best Practices in Data Science" />
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category pill">CRM Analytics</span>
+          <h3><a href="blog-detail.html">Best Practices in Data Science</a></h3>
+          <span class="post-date">Dec 10, 2024</span>
+          <p>Key principles for successful data science projects.</p>
+          <a href="blog-detail.html" class="read-more">Read more</a>
         </div>
       </article>
-      <article class="blog-post-detailed exact-ref">
+      <article class="blog-post-detailed exact-ref" data-category="trends">
         <div class="blog-img-aspect">
-          <img src="assets/blog2.jpg" alt="Blog 2" />
-          <div class="blog-overlay">
-            <span class="blog-category pill">CRM Analytics</span>
-            <h3>Best Practices in Data Science</h3>
-            <span class="post-date">Dec 10, 2024</span>
-            <p>Key principles for successful data science projects.</p>
-            <a href="blog-detail.html" class="read-more">Read more</a>
-          </div>
+          <img src="assets/blog1.jpg" alt="Future of AI" />
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category pill">Trends</span>
+          <h3><a href="blog-detail.html">The Future of AI in Software Development</a></h3>
+          <span class="post-date">Dec 12, 2024</span>
+          <p>Exploring how artificial intelligence is transforming the way we write code.</p>
+          <a href="blog-detail.html" class="read-more">Read more</a>
         </div>
       </article>
-      <article class="blog-post-detailed exact-ref">
+      <article class="blog-post-detailed exact-ref" data-category="events">
         <div class="blog-img-aspect">
-          <img src="assets/blog1.jpg" alt="Blog 1" />
-          <div class="blog-overlay">
-            <span class="blog-category pill">Trends</span>
-            <h3>The Future of AI in Software Development</h3>
-            <span class="post-date">Dec 12, 2024</span>
-            <p>Exploring how artificial intelligence is transforming the way we write code.</p>
-            <a href="blog-detail.html" class="read-more">Read more</a>
-          </div>
+          <img src="assets/blog4.jpg" alt="Global AI Summit" />
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category pill">Events</span>
+          <h3><a href="blog-detail.html">Speaking at Global AI Summit</a></h3>
+          <span class="post-date">Nov 15, 2024</span>
+          <p>Key takeaways and experiences from my recent talk.</p>
+          <a href="blog-detail.html" class="read-more">Read more</a>
         </div>
       </article>
-      <article class="blog-post-detailed exact-ref">
-        <div class="blog-img-aspect">
-          <img src="assets/blog4.jpg" alt="Blog 4" />
-          <div class="blog-overlay">
-            <span class="blog-category pill">Events</span>
-            <h3>Speaking at Global AI Summit</h3>
-            <span class="post-date">Nov 15, 2024</span>
-            <p>Key takeaways and experiences from my recent talk.</p>
-            <a href="blog-detail.html" class="read-more">Read more</a>
-          </div>
-        </div>
-      </article>
+      <!-- Add more blog-post-detailed articles as needed -->
     </div>
   </main>
+  <!-- FOOTER -->
   <footer>
-    <!-- Add your footer here -->
+    <div class="footer-content">
+      <div class="footer-section name-section">
+        <h2>Astha Singh<br>Thakur</h2>
+        <!-- <a href="mailto:asthasingh2066@gmail.com" class="email-link">asthasingh2066@gmail.com</a> -->
+        <a href="#" style="color: #7B68EE;">San Francisco, CA</a>
+        <div class="resume-link">
+          Also, here's a cool sheet of paper - <a href="Resume/Resume_Astha.pdf" target="_blank">Resume</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Explore</h3>
+        <a href="about.html#experience">Work</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#projects">Project</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <a href="mailto:asthasingh2066@gmail.com">Email</a>
+        <a href="tel:+14698197543">Phone</a>
+        <a href="https://calendly.com/asthat/30min" target="_blank">Calendly</a>
+      </div>
+      <div class="footer-section">
+        <h3>Social</h3>
+        <a href="https://www.linkedin.com/in/astha-t/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/ASTHA22" target="_blank">GitHub</a>
+        <a href="https://leetcode.com/u/Astha_22/" target="_blank">Leetcode</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Made with ❤️ by Astha</p>
+    </div>
   </footer>
   <script src="js/blog.js"></script>
   <script src="js/main.js"></script>

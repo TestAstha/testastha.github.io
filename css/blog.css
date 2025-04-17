@@ -1,32 +1,5 @@
 /* Blog Section/Page Styles */
-.blog-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem 4rem;
-}
-
-.blog-categories {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-}
-
-.blog-cat-btn {
-  background: var(--alt-bg);
-  color: var(--primary-color);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-.blog-cat-btn.active, .blog-cat-btn:hover {
-  background: var(--primary-color);
-  color: #fff;
-}
+/* Only keep styles for index.html blog section here. Blog page styles moved to blog-page.css */
 
 .blog-list {
   display: grid;
@@ -75,51 +48,9 @@
   color: #6d48c7;
 }
 
-.blog-page-detailed, .blog-categories-scroll, .blog-cat-btn, .read-more {
-  cursor: none !important;
-}
-
-.blog-categories-scroll {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  -webkit-overflow-scrolling: touch;
-}
-
-.blog-cat-btn {
-  background: var(--alt-bg);
-  color: var(--primary-color);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  white-space: nowrap;
-}
-.blog-cat-btn.active, .blog-cat-btn:hover {
-  background: var(--primary-color);
-  color: #fff;
-}
-
 @media (max-width: 768px) {
-  .blog-page {
-    padding: 4rem 1rem 2rem;
-  }
   .blog-list {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  .blog-categories {
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
-  }
-  .blog-categories-scroll {
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
   }
 }

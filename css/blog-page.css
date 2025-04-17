@@ -1,0 +1,199 @@
+/* Blog Page Dedicated Styles (moved from blog.css) */
+.blog-page,
+.blog-page-detailed {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+}
+
+.blog-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2.5rem 0 2rem 0;
+  background: var(--alt-bg);
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(152,112,254,0.06);
+}
+.blog-hero-title {
+  font-family: var(--font-main);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.7rem;
+}
+.blog-hero-desc {
+  color: var(--secondary-color);
+  font-size: 1.35rem;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.blog-categories,
+.blog-categories-scroll {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blog-categories-scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-cat-btn {
+  background: var(--alt-bg);
+  color: var(--primary-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+  font-family: var(--font-main);
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 4px rgba(152,112,254,0.07);
+}
+.blog-cat-btn.active, .blog-cat-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.blog-page-detailed {
+  cursor: none !important;
+}
+
+.blog-recent-featured {
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+.blog-recent-featured .blog-post-detailed.featured {
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 4px 24px rgba(152,112,254,0.10);
+  border: 2px solid var(--primary-color);
+  background: var(--elevated-bg);
+  position: relative;
+  z-index: 2;
+}
+
+.blog-grid-detailed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+  margin-top: 2.7rem;
+  margin-bottom: 2.7rem;
+}
+
+.blog-post-detailed {
+  background: var(--elevated-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: var(--card-shadow);
+  min-width: 0;
+  padding: 0;
+}
+.blog-post-detailed:hover {
+  box-shadow: var(--hover-card-shadow);
+  transform: translateY(-6px);
+}
+
+.blog-img-aspect {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background: #181820;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-img-aspect img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card-content {
+  padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-category {
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.3rem 1rem;
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-main);
+}
+
+.blog-date, .post-date {
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.read-more {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: auto;
+  transition: color 0.2s;
+  font-family: var(--font-main);
+}
+.read-more:hover {
+  color: #6d48c7;
+}
+
+@media (max-width: 1024px) {
+  .blog-grid-detailed {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .blog-hero-title {
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .blog-page,
+  .blog-page-detailed {
+    padding: 2.5rem 0.5rem 1.2rem;
+  }
+  .blog-grid-detailed {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .blog-hero {
+    padding: 1.2rem 0 1rem 0;
+  }
+  .blog-hero-title {
+    font-size: 1.4rem;
+  }
+  .blog-hero-desc {
+    font-size: 1rem;
+  }
+  .blog-recent-featured {
+    margin-bottom: 1.2rem;
+  }
+}
