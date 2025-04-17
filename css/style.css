@@ -2673,9 +2673,7 @@ nav {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  .card-body {
-    padding: 0.7rem 0.6rem 0.5rem 0.6rem !important;
-  }
+ 
   .card-title {
     font-size: 1.13rem;
     font-weight: 600;

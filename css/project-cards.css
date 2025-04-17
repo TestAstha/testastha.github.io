@@ -31,16 +31,20 @@
     object-fit: cover;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .card-body > div {
-    padding: 1.5rem;
+    padding: 0.8rem 1rem 1.2rem 1rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     position: relative;
     z-index: 1;
     border-top: 1px solid rgba(123, 104, 238, 0.1);
+    background: transparent;
 }
 
 .project-date {
@@ -236,9 +240,7 @@
     display: block;
     margin: 0 auto;
   }
-  .projects-container .card-body {
-    padding: 1.5rem !important;
-  }
+
   .projects-container .card-body > div {
     padding: 0 !important;
   }
@@ -468,4 +470,7 @@
     background: #9870fe;
     transform: scaleX(0);
     transform-origin: bottom left;
+}
+.project-item.card {
+  padding: 0 !important;
 }
