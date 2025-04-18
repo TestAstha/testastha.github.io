@@ -215,6 +215,7 @@
   cursor: pointer;
   text-decoration: none !important;
   color: inherit !important;
+  overflow: hidden;
 }
 .flat-blog-card:visited, .flat-blog-card:active, .flat-blog-card:focus {
   text-decoration: none !important;
@@ -306,6 +307,10 @@
 .blog-img-up .flat-blog-img {
   object-fit: cover;
   object-position: 50% 15%;
+}
+
+.object-top {
+  object-position: 50% 30% !important;
 }
 
 /* Blog Categories Bar (scoped, blog page only) */
