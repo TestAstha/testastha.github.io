@@ -360,6 +360,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectItems = document.querySelectorAll('.project-item');
     const projectsContainer = document.querySelector('.projects-container');
     
+    // Set default category to 'featured' on load
+    let defaultCategory = 'featured';
+    tabBtns.forEach(btn => {
+        if (btn.getAttribute('data-category') === defaultCategory) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    // Ensure only featured projects are visible on load
+    projectItems.forEach(item => {
+        if (item.getAttribute('data-category').includes(defaultCategory)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const category = btn.getAttribute('data-category');
+            filterProjects(category);
+        });
+    });
+
     // Function to filter projects
     function filterProjects(category) {
         // Show/hide projects based on category
@@ -383,18 +410,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            tabBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            const category = btn.getAttribute('data-category');
-            filterProjects(category);
-        });
-    });
     
     // Mobile carousel
     const prevArrow = document.querySelector('.project-prev-arrow');

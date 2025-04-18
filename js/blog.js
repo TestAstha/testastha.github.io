@@ -55,36 +55,29 @@ catBtns.forEach(btn => {
   });
 });
 
-// On page load, show only cards for the active tab
+// On page load, force Featured tab as default
 window.addEventListener('DOMContentLoaded', () => {
-  const activeBtn = document.querySelector('.tab-btn.active');
-  if (activeBtn) {
-    const cat = activeBtn.textContent.trim().toLowerCase();
+  // Remove active from all, add to Featured
+  const catBtns = document.querySelectorAll('.tab-btn');
+  catBtns.forEach(btn => btn.classList.remove('active'));
+  const featuredBtn = Array.from(catBtns).find(btn => btn.textContent.trim().toLowerCase() === 'featured');
+  if (featuredBtn) {
+    featuredBtn.classList.add('active');
+    const cat = 'featured';
     let visibleCards = [];
+    const blogCards = Array.from(document.querySelectorAll('.flat-blog-card'));
     blogCards.forEach(card => {
       const cardCats = card.getAttribute('data-category').split(' ');
-      if (cat === 'all') {
+      if (cardCats.includes('featured')) {
         card.style.display = '';
         visibleCards.push(card);
-      } else if (cat === 'featured') {
-        if (cardCats.includes('featured')) {
-          card.style.display = '';
-          visibleCards.push(card);
-        } else {
-          card.style.display = 'none';
-        }
       } else {
-        if (cardCats.includes(cat)) {
-          card.style.display = '';
-          visibleCards.push(card);
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = 'none';
       }
     });
-    if (cat !== 'featured') {
-      visibleCards.sort((a, b) => getCardDate(b) - getCardDate(a));
-    }
-    sortAndDisplayCards(visibleCards);
+    // Sort not needed for featured
+    const blogGrid = document.querySelector('.lovable-blog-grid');
+    blogGrid.innerHTML = '';
+    visibleCards.forEach(card => blogGrid.appendChild(card));
   }
 });

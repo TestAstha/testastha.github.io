@@ -129,6 +129,22 @@
   display: block;
 }
 
+.focus-center {
+  object-position: center 85%;
+}
+
+.focus-top {
+  object-position: center 10%;
+}
+
+.focus-slightly-top {
+  object-position: center 30%;
+}
+
+.focus-midtop {
+  object-position: center 45%;
+}
+
 .blog-card-content {
   padding: 1.2rem 1.1rem 1.1rem 1.1rem;
   display: flex;
